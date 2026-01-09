@@ -177,6 +177,7 @@
   do {                                                                         \
     if ((_v)->items != NULL && (_v)->capacity > 0) { \
     free((_v)->items); \
+    (_v)->items = NULL; \
     (_v)->capacity = 0; \
     (_v)->count = 0; \
     } \

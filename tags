@@ -67,6 +67,7 @@ CR	src/vups.h	/^#define CR(/;"	d
 CRL	src/vups.h	/^#define CRL(/;"	d
 Component	src/main.c	/^typedef struct Component {$/;"	s	file:
 Component	src/main.c	/^} Component;$/;"	t	typeref:struct:Component	file:
+Component_Big	src/main.c	/^typedef uint64_t Component_Big[1000];$/;"	t	typeref:typename:uint64_t[1000]	file:
 Component_Health	src/main.c	/^typedef uint32_t Component_Health;$/;"	t	typeref:typename:uint32_t	file:
 Component_Name	src/main.c	/^typedef String_Holder Component_Name;$/;"	t	typeref:typename:String_Holder	file:
 Component_None	src/main.c	/^typedef void* Component_None;$/;"	t	typeref:typename:void *	file:
@@ -91,7 +92,6 @@ PTR	src/vups.h	/^#define PTR(/;"	d
 R	src/vups.h	/^#define R return RE/;"	d
 REALLOC	src/vups.h	/^#define REALLOC /;"	d
 RET	src/vups.h	/^#define RET /;"	d
-Root	src/main.c	/^typedef struct Root Root;$/;"	t	typeref:struct:Root	file:
 Root	src/main.c	/^typedef struct Root {$/;"	s	file:
 Root	src/main.c	/^} Root;$/;"	t	typeref:struct:Root	file:
 String_Holder	src/vups.h	/^} String_Holder;$/;"	t	typeref:struct:__anon810325200208
@@ -100,7 +100,8 @@ String_Variable_Slice	src/vups.h	/^} String_Variable_Slice;$/;"	t	typeref:struct
 String_Variable_Slice_Ptr	src/vups.h	/^typedef String_Variable_Slice *String_Variable_Slice_Ptr;$/;"	t	typeref:typename:String_Variable_Slice *
 System	src/main.c	/^typedef struct System {$/;"	s	file:
 System	src/main.c	/^} System;$/;"	t	typeref:struct:System	file:
-System_Fn	src/main.c	/^typedef void (*System_Fn)(Root*, Component_Types, Component_Types);$/;"	t	typeref:typename:void (*)(Root *,Component_Types,Component_Types)	file:
+System_Fn	src/main.c	/^typedef void (*System_Fn)(Component**, u8*);$/;"	t	typeref:typename:void (*)(Component **,u8 *)	file:
+System_Mass_Fn	src/main.c	/^typedef void (*System_Mass_Fn)(Component_Ptrs, u8*);$/;"	t	typeref:typename:void (*)(Component_Ptrs,u8 *)	file:
 TODO	src/vups.h	/^#define TODO(/;"	d
 VUPSDEF	src/vups.h	/^#define VUPSDEF$/;"	d
 VUPS_END_SEMI	src/vups.h	/^#define VUPS_END_SEMI /;"	d
@@ -133,7 +134,10 @@ a_clear	src/vups.h	/^u8 *a_clear(Arena *a) { a->count = 0; return a->items;}$/;"
 a_var	src/vups.h	/^u8 *a_var(Arena *a, size_t size) { return _a_var_opt(a, size, true, false); }$/;"	f	typeref:typename:u8 *
 add_component	src/main.c	/^size_t add_component(Entity* entity, Component component) {$/;"	f	typeref:typename:size_t
 add_entity	src/main.c	/^ID  add_entity(Root* root, Entity entity) {$/;"	f	typeref:typename:ID
+add_system	src/main.c	/^ID  add_system(Root* root, System system) {$/;"	f	typeref:typename:ID
+anydata	src/main.c	/^  void* anydata;$/;"	m	struct:System	typeref:typename:void *	file:
 as	src/main.c	/^  } as;$/;"	m	struct:Component	typeref:union:Component::__anon6a96e172020a	file:
+big	src/main.c	/^    Component_Big big;$/;"	m	union:Component::__anon6a96e172020a	typeref:typename:Component_Big	file:
 capacity	src/main.c	/^  size_t capacity;$/;"	m	struct:__anon6a96e1720108	typeref:typename:size_t	file:
 capacity	src/vups.h	/^  size_t capacity;$/;"	m	struct:__anon810325200108	typeref:typename:size_t
 capacity	src/vups.h	/^  size_t capacity;$/;"	m	struct:__anon810325200208	typeref:typename:size_t
@@ -141,8 +145,12 @@ components	src/main.c	/^  Components components;$/;"	m	struct:Entity	typeref:typ
 count	src/main.c	/^  size_t count;$/;"	m	struct:__anon6a96e1720108	typeref:typename:size_t	file:
 count	src/vups.h	/^  size_t count;$/;"	m	struct:__anon810325200108	typeref:typename:size_t
 count	src/vups.h	/^  size_t count;$/;"	m	struct:__anon810325200208	typeref:typename:size_t
+create_example_entity	src/main.c	/^Entity create_example_entity(Component_Health health_val, uint32_t x, uint32_t y) {$/;"	f	typeref:typename:Entity
+create_example_system	src/main.c	/^System create_example_system() {$/;"	f	typeref:typename:System
 end	src/vups.h	/^  size_t end;$/;"	m	struct:__anon810325200308	typeref:typename:size_t
 ent	src/main.c	/^  Entities ent;$/;"	m	struct:Root	typeref:typename:Entities	file:
+example_invoke	src/main.c	/^void example_invoke (Component** components, u8* args) {$/;"	f	typeref:typename:void
+example_mass_invoke	src/main.c	/^void example_mass_invoke(Component_Ptrs components, u8* args) {$/;"	f	typeref:typename:void
 find_component	src/main.c	/^size_t find_component(Entity* entity, Component_Type component_type) {$/;"	f	typeref:typename:size_t
 free_component	src/main.c	/^void free_component(Component* component) {$/;"	f	typeref:typename:void
 free_component_by_index	src/main.c	/^size_t free_component_by_index(Entity* entity, size_t index) {$/;"	f	typeref:typename:size_t
@@ -150,17 +158,28 @@ free_component_by_type	src/main.c	/^size_t free_component_by_type(Entity* entity
 free_entity	src/main.c	/^void free_entity(Entity* entity) {$/;"	f	typeref:typename:void
 free_root	src/main.c	/^void free_root(Root* root) {$/;"	f	typeref:typename:void
 free_system	src/main.c	/^void free_system(System* system){$/;"	f	typeref:typename:void
+get_all_components_of_types	src/main.c	/^void get_all_components_of_types(Entity* entity,Component_Types to_use_types, Component_Ptrs* to/;"	f	typeref:typename:void
+get_component_of_type	src/main.c	/^Component* get_component_of_type(Entity* entity,Component_Type to_use_type) {$/;"	f	typeref:typename:Component *
 health	src/main.c	/^    Component_Health health;$/;"	m	union:Component::__anon6a96e172020a	typeref:typename:Component_Health	file:
 id	src/main.c	/^  ID  id;$/;"	m	struct:Entity	typeref:typename:ID	file:
 id	src/main.c	/^  ID id; \/\/ this is a smallest free id $/;"	m	struct:Root	typeref:typename:ID	file:
 id	src/main.c	/^  ID id;$/;"	m	struct:System	typeref:typename:ID	file:
+inspect_component	src/main.c	/^void inspect_component(Component component, u8 indentation) {$/;"	f	typeref:typename:void
+inspect_component_type	src/main.c	/^void inspect_component_type(Component_Type type) {$/;"	f	typeref:typename:void
+inspect_component_value	src/main.c	/^void inspect_component_value(Component component) {$/;"	f	typeref:typename:void
+inspect_entity	src/main.c	/^void inspect_entity(Entity entity, u8 indentation) {$/;"	f	typeref:typename:void
+inspect_root	src/main.c	/^void inspect_root(Root root, u8 indentation) {$/;"	f	typeref:typename:void
+inspect_system	src/main.c	/^void inspect_system(System system, u8 indentation) {$/;"	f	typeref:typename:void
 invoke	src/main.c	/^  System_Fn invoke;$/;"	m	struct:System	typeref:typename:System_Fn	file:
-invoke_system	src/main.c	/^void invoke_system(Root* root, System* system) {$/;"	f	typeref:typename:void
+invoke	src/main.c	/^void invoke(Root* root, System* system, u8* args) {$/;"	f	typeref:typename:void
+invoke_all	src/main.c	/^void invoke_all(Root* root, u8* args) {$/;"	f	typeref:typename:void
+invoke_system	src/main.c	/^void invoke_system(Entities* entities, System* system, u8* args) {$/;"	f	typeref:typename:void
 is	src/main.c	/^  Component_Type is;$/;"	m	struct:Component	typeref:typename:Component_Type	file:
 items	src/main.c	/^  u8 *items;$/;"	m	struct:__anon6a96e1720108	typeref:typename:u8 *	file:
 items	src/vups.h	/^  char *items;$/;"	m	struct:__anon810325200208	typeref:typename:char *
 items	src/vups.h	/^  u8 *items;$/;"	m	struct:__anon810325200108	typeref:typename:u8 *
 main	src/main.c	/^int main (int argc, char** argv) {$/;"	f	typeref:typename:int
+mass_invoke	src/main.c	/^  System_Mass_Fn mass_invoke;$/;"	m	struct:System	typeref:typename:System_Mass_Fn	file:
 may_fail	src/vups.h	/^bool may_fail() {$/;"	f	typeref:typename:bool
 may_fail_nest	src/vups.h	/^bool may_fail_nest() {$/;"	f	typeref:typename:bool
 name	src/main.c	/^    Component_Name name;$/;"	m	union:Component::__anon6a96e172020a	typeref:typename:Component_Name	file:
@@ -184,8 +203,7 @@ start	src/vups.h	/^  size_t start;$/;"	m	struct:__anon810325200308	typeref:typen
 svs_link	src/vups.h	/^String_Variable_Slice svs_link(String_Holder_Ptr sh) {$/;"	f	typeref:typename:String_Variable_Slice
 svs_to_sh	src/vups.h	/^String_Holder svs_to_sh(String_Variable_Slice_Ptr svs) {$/;"	f	typeref:typename:String_Holder
 sys	src/main.c	/^  Systems  sys;$/;"	m	struct:Root	typeref:typename:Systems	file:
-to_read	src/main.c	/^  Component_Types to_read;$/;"	m	struct:System	typeref:typename:Component_Types	file:
-to_write	src/main.c	/^  Component_Types to_write;$/;"	m	struct:System	typeref:typename:Component_Types	file:
+to_use	src/main.c	/^  Component_Types to_use;$/;"	m	struct:System	typeref:typename:Component_Types	file:
 u8	src/vups.h	/^typedef unsigned char u8;$/;"	t	typeref:typename:unsigned char
 v_alloc	src/vups.h	/^#define v_alloc(/;"	d
 v_alloc_add	src/vups.h	/^#define v_alloc_add(/;"	d

@@ -14,6 +14,8 @@ Cmd *cmd = &cmd0;
 void cc() {
   nob_cc(cmd);
   nob_cc_flags(cmd);
+  cmd_append(cmd, "-g");
+  cmd_append(cmd, "-O0");
 }
 
 #define BUILD_FOLDER "build/"

@@ -139,7 +139,7 @@ after doing a bit of research online i read that firt approach is dense table
 https://github.com/SanderMertens/ecs-faq
 also i noticed that in flecs they make new tables each time there is a new entity that has components that no other antity has (e.g. health but no pos for my previous examples.)
 https://github.com/SanderMertens/flecs :src/storage/table.h:141
-
+k
 
 so I also saw a bit of other things but i dont really want to copycat every detail, so i think i will get the general idea and roll with it.
 
@@ -150,5 +150,9 @@ every array of components. and checks if that component is what it needs and doe
 I realize that im tryimg to make a general ECS that can do anything, but really i just want some small ecs that will work and not have the advantage of
 changing on the fly. Foe mr it will be fine if ECS is compile-time dependent. so, I think instead of doing all of that i can just make Component of type something, no?
 
+so i managed to create something like a ECS, but using OOP type thing not data oriented. it was pretty straightforward, but I havent tested it on anything big, oh wait but i just can hloldup
+so it was fine untill i started to increase component size, in static approach it matters a lot. if we limit size to 100 uint64's, we can have millions of entities, but when we go higher it will drastically shrink it. 
+ah, and also implementaation isnt full, ya cant delete anything, only create. well, yiu can remove a component, but it will be just turned to type NONE, its still there.
+I would like to tackle table-based approachm but imma sleep for now bb
 
 
