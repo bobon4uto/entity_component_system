@@ -155,4 +155,115 @@ so it was fine untill i started to increase component size, in static approach i
 ah, and also implementaation isnt full, ya cant delete anything, only create. well, yiu can remove a component, but it will be just turned to type NONE, its still there.
 I would like to tackle table-based approachm but imma sleep for now bb
 
+So after looking a bit into other implementations i found https://github.com/Ralith/hecs which looks absolutely beutiful (but is in rust, which isnt a problem its just I wanna do it in c)
+si I want to match its api 
+
+```rust
+let mut world = hecs::World::new();
+// Nearly any type can be used as a component with zero boilerplate
+let a = world.spawn((123, true, "abc"));
+let b = world.spawn((42, false));
+// Systems can be simple for loops
+for (number, &flag) in world.query_mut::<(&mut i32, &bool)>() {
+  if flag { *number *= 2; }
+}
+// Random access is simple and safe
+assert_eq!(*world.get::<&i32>(a).unwrap(), 246);
+assert_eq!(*world.get::<&i32>(b).unwrap(), 42);
+```
+so, i want: world_spawn(...)
+which will make an entity out of all components, and be able to make systems that are just for loops, but that means creating a query? 
+does sound like that.
+
+I moved implementation i just made to `deprecated/naive_static`
+now lets implement world spawn, etc
+first problem is that c doesnt have an easy way to operate variadic args, yes there is a way but it feels hard to use. although maybe Im just not accostumed to it.
+but the main thing how DO we know which types we're using???? only thing i can come up with is _Generic
+
+its something i done in my utils (vups.h)
+when it PROBE's types. it would be cool if I dodnt have to define every type in the Generic macro, but whatever...
+so i think we have to make enum with all types (even structs) and Generic that will return enum on encountering that type, so literally my PROBE,
+but returns enum, instead of printing strings.
+I think I can push it to vups.
+
+```c
+#define _VUPS_TT_ENUM_DEF(TYPE, FORMAT)                                                 \
+  TYPE_##TYPE
+typedef enum {
+  VUPS_TYPES(_VUPS_TT_ENUM_DEF, 0)
+  UNKNOWN
+} Vups_types ;
+#define _VUPS_TT_ENUM(TYPE, FORMAT)                                                 \
+  TYPE:                                                                        \
+  TYPE_##TYPE
+#define _TYPE_ENUM(X, T)                                                         \
+  _Generic((X), VUPS_TYPES(T, X) VUPS_NEW_TYPES(T) default: UNKNOWN)
+#define TYPE_ENUM(X) _TYPE_ENUM(X, _VUPS_TT_ENUM)
+```
+with this we can define all types in VUPS_TYPES like this 
+
+```c
+#define VUPS_TYPES(T, X)                                                       \
+  T(int, "%d"), T(size_t, "%zu"), \
+  T(float, "%f"), T(double, "%lf"), T(char_ptr, "%s"),             \
+      T(char, "%c"), T(const_char_ptr, "%s"),                                    \
+      T(bool, X ? "true(%0b)" : "false(%0b)"),
+```
+
+(note that FORMAT is used in my PROBE cahr_ptr is typedef to char*, since macro breaks otherwise)
+
+now running this 
+```c
+  PROBE(TYPE_ENUM(1));
+  PROBE(TYPE_ENUM("a"));
+```
+TYPE_ENUM(1) = (int) {0}
+TYPE_ENUM("a") = (int) {4}
+
+note that enum is jsut an int, and places of types are influencing numbering, i think i will pull UNKNOWN up, so that i can have it as 0
+also i refactor a bit to remove , in VUPS_TYPES (so that it may be used for ; or idk)
+I think i cant avoid world_spawn being a macro, mainly because nonmacro ... does not show types (once were in function we have no way of knowing the types)
+it can be avoided by giving that function types we just got with macros, but then why do we need that function anyway?
+lets implement more inconvinient approach with 
+
+world_start_spawn(world)
+add_int_comp(world, 1)
+add_char_ptr_comp(world, "a")
+world_end_spawn(world)
+
+ant then we gotta figure how to macro it
+
+So i managed to make this (macro that figures out the type)
+  add_X_comp ( (u8)1 );
+but macros are getting REALLY annoying, i cant see a thing, meybe its smart doing metaprogramming with nob, but i feel macros still can do 
+
+world_spawn(world, 1, "hello")
+
+i actually found some saving grace for my T (template) function, and kindof want to implement it in VUPS
+
+```c
+#include <stdio.h>
+
+#define FUNCTION(A) printf(#A "\n")
+
+#define _MACRO_1(arg1) FUNCTION(arg1)
+#define _MACRO_2(arg1, arg2) FUNCTION(arg1), FUNCTION(arg2)
+
+#define CALL_FUNCTION(...) _MACRO_COUNT(__VA_ARGS__, _MACRO_2, _MACRO_1)(__VA_ARGS__)
+#define _MACRO_COUNT(arg1, arg2, macro, ...) macro
+
+int main() {
+    CALL_FUNCTION(1);
+    CALL_FUNCTION(1, 2);
+    return 0;
+}
+```
+Yes, calling with different number of args!!!!
+my approach was to use _F _X when i didnt need format or value
+
+this approach allows to make world_spawn(...)
+but is limited to number of arguments that i define. I Guess i can make it as big as set of all supported types, but that hinderence seems very bad,
+and we cant use macros to generate macros, #define doesnt work inside a macro!
+
+you know what works though? codegen. I dont really want to do world_spawn in macros anymore, so less go
 

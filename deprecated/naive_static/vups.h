@@ -12,33 +12,6 @@
 #include <stdint.h>
 #include <string.h>
 #include <unistd.h>
-#include <stdarg.h>
-#include <assert.h>
-
-
-#ifndef VUPS_TYPES
-typedef int8_t   i8;
-typedef int16_t  i16;
-typedef int32_t  i32;
-typedef int64_t  i64;
-typedef uint8_t  u8;
-typedef uint16_t u16;
-typedef uint32_t u32;
-typedef uint64_t u64;
-typedef float    f32;
-typedef double   f64;
-typedef size_t   u;
-typedef char* char_ptr;
-typedef const char* const_char_ptr;
-#define VUPS_TYPES(T, X)                                                       \
-  T(size_t, "%zu", X) \
-  T(u8, "%u",X) T(u16, "%u",X) T(u32, "%u",X) \
-  T(i8, "%d",X) T(i16, "%d",X) T(i32, "%d",X) T(i64, "%d",X) \
-  T(f32, "%f",X) T(f64, "%lf",X) \
-  T(char_ptr, "%s",X)             \
-      T(char, "%c",X) T(const_char_ptr, "%s",X)                                    \
-      T(bool, X ? "true(%0b)" : "false(%0b)",X)
-#endif
 
 #ifndef VUPSDEF
 #define VUPSDEF
@@ -78,12 +51,19 @@ typedef const char* const_char_ptr;
 #endif
 // define new types to use PRINT
 // TTT
-#define _VUPS_TT(TYPE, FORMAT, _X)                                                 \
+#define _VUPS_TT(TYPE, FORMAT)                                                 \
   TYPE:                                                                        \
-  #TYPE,
-#define _VUPS_TF(TYPE, FORMAT, _X)                                                 \
+  #TYPE
+#define _VUPS_TF(TYPE, FORMAT)                                                 \
   TYPE:                                                                        \
-  FORMAT,
+  FORMAT
+#ifndef VUPS_TYPES
+#define VUPS_TYPES(T, X)                                                       \
+  T(int, "%d"), T(size_t, "%zu"), \
+  T(float, "%f"), T(double, "%lf"), T(char *, "%s"),             \
+      T(char, "%c"), T(const char *, "%s"),                                    \
+      T(bool, X ? "true(%0b)" : "false(%0b)"),
+#endif
 // condition ? value_if_true : value_if_false;
 #define FORMAT(X, T)                                                           \
   _Generic((X), VUPS_TYPES(T, X) VUPS_NEW_TYPES(T) default: "%p")
@@ -209,6 +189,7 @@ typedef const char* const_char_ptr;
 //==============================================================================
 //																 ARENA
 //==============================================================================
+typedef unsigned char u8;
 
 typedef struct {
   size_t capacity;
