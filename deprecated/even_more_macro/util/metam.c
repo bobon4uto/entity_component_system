@@ -1,8 +1,6 @@
 #define VUPS_IMPLEMENTATION
 #include "../vups.h"
 
-
-
 u meta_macro_count_args (String_Holder in, u position) {
   char c = in.items[position];
   u count = 1;
@@ -22,7 +20,7 @@ u meta_macro_count_args_for_each(String_Holder in, const char* target_function) 
 
   for ( u i = 0;i<in.count;++i) {
   //  printf("comparing: (%*s == %s)", (i32)target_function_len, in.items + i, target_function);
-    if (0==strncmp(in.items + i, target_function, target_function_len)) {
+    if (strncmp(in.items + i, target_function, target_function_len)) {
       u cur_count = meta_macro_count_args (in, i);
       if (cur_count == 0) break;
       if (cur_count > count) count=cur_count;
@@ -76,91 +74,14 @@ String_Holder make_meta_macro_function_infinitely_variadic(u count_needed,const 
 
   return sh0;
 }
-String_Holder inf (String_Holder* in, char* function_name) {
 
-  u count_needed = meta_macro_count_args_for_each(*in,function_name);
-  printf("count = %zu\n", count_needed);
-  String_Holder out0 = make_meta_macro_function_infinitely_variadic(count_needed, function_name);
-  return out0;
-}
-String_Holder meta_macro_get_type (String_Holder* in,u position) {
-  bool is_struct_body = false;
-  bool comment = false;
-  bool multiline_comment = false;
-  bool precomment = false;
-  bool macro = false;
-  char c = ' ';
-  u i = position;
-  for ( ;i<in->count;++i) {
-    c = in->items[i];
-    if (c=='/'&&precomment&&!multiline_comment) {comment=true;precomment=false;}
-    if (c=='/'&&precomment&&multiline_comment) {comment=false;precomment=false;}
-    if (c=='*'&&precomment) {multiline_comment=true;comment=true;precomment=false;}
-    if (c=='\n') {comment=false;macro=false;}
-    if (c=='*'&&multiline_comment) {precomment=true;}
-    if (c=='/') precomment=true;
-    if (c=='#') macro=true;
-    if (c=='{') is_struct_body = true;
-    if (c=='}') is_struct_body = false;
-    if (c==';' && !is_struct_body&&!comment&&!macro) break;
-  }
-  u typename_len = 0;
-  --i;
-  for ( ;i>position;--i) {
-    c = in->items[i];
-    if (c==' '||c=='}'||c=='*') break;
-    ++typename_len;
-  }
-  ++i;
-  String_Holder out0 = {0};
-  sh_append_buf(&out0,in->items+i,typename_len);
-  return out0;
-
-}
-String_Holder types (String_Holder* in) {
-  String_Holder out0 = {0};
-  String_Holder* out = &out0 ;
-      sh_appendf(out, "#define TYPEDEF_TYPES(T,X) \\\n");
-  for ( u i = 0;i<in->count;++i) {
-  //  printf("comparing: (%*s == %s)", (i32)target_function_len, in.items + i, target_function);
-    if (0==strncmp(in->items + i, "typedef", strlen("typedef"))) {
-      String_Holder gotten_type = meta_macro_get_type (in, i);
-        if (gotten_type.count) {
-      sh_appendf(out, "T(");
-      sh_append_buf(out, gotten_type.items, gotten_type.count);
-
-      sh_appendf(out, ",\"\",X) \\\n");
-
-
-      sh_free(&gotten_type);
-        }
-    }
-  }
-      sh_append(out, '\n');
-  return out0;
-}
-
-
-
-
-typedef struct Filepaths {
-  u capacity;
-  u count;
-  char** items;
-} Filepaths;
 int main(int argc, char **argv) {
   char* in_file_path = "main.mm.c";
-  Filepaths in_file_paths0 = {0};
-  Filepaths* in_file_paths = &in_file_paths0;
   char* out_file_path = "a.out";
   char* function_name = "function";
-  char mode = 'i';
   bool do_print = false;
   if (argc < 2) {
-    printf("usage: %s [-m mode{inf|type|just}] [-o output] [-p]{print to stdout} [-f function_name] file\n"
-        "inf = infinite variadic macro (allow function(...) with as many args as you want)\n"
-        "just = print what program read\n"
-        "type = create macro that will act as array of ALL typedef'ed values in input files\n", argv[0]);
+    printf("usage: %s [-o output] [-p]{print to stdout} [-f function_name] file", argv[0]);
     exit(0);
   }
   else {
@@ -170,29 +91,22 @@ int main(int argc, char **argv) {
             case 'o': out_file_path = argv[++i]; break;
             case 'f': function_name = argv[++i]; break;
             case 'p': do_print = true; break;
-            case 'm': mode = argv[++i][0]; break;
             //case '\0': break;
           }
       }
-      else v_append(in_file_paths, argv[i]);
+      else in_file_path = argv[i];
     }
     printf("in_file_path = %s\n", in_file_path);
     printf("out_file_path = %s\n", out_file_path);
     printf("function_name = %s\n", function_name);
-    printf("mode = '%c'\n", mode);
   }
   String_Holder in0 = {0};
   String_Holder* in = &in0;
-  for (u i=0; i<in_file_paths->count;++i) {
-    read_file(in, in_file_paths->items[i]);
-  }
+  read_file(in, in_file_path);
   //printf ("%s",sh_c_str(in));
-  String_Holder out0 = {0};
-  switch (mode){
-    case 'i': out0 = inf(in, function_name); break;
-    case 't': out0 = types(in); break;
-    case 'j': sh_append_buf(&out0, in->items, in->count); printf("%s", sh_c_str(in)); break;
-  }
+  u count_needed = meta_macro_count_args_for_each(in0,function_name);
+  printf("count = %zu\n", count_needed);
+  String_Holder out0 = make_meta_macro_function_infinitely_variadic(count_needed, function_name);
   String_Holder* out = &out0;
 
 

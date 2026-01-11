@@ -41,8 +41,8 @@ typedef const char* const_char_ptr;
   T(i64, "%d",X) \
   T(f32, "%f",X) \
   T(f64, "%lf",X) \
-  T(char_ptr, "%s",X)             \
-      T(char, "%c",X) T(const_char_ptr, "%s",X)                                    \
+  /*T(char_ptr, "%s",X)*/             \
+      T(char, "%c",X) /*T(const_char_ptr, "%s",X) */                                   \
       T(bool, X ? "true(%0b)" : "false(%0b)",X)\
   T(Bytes, "",X) \
 
@@ -452,14 +452,16 @@ bool read_file(String_Holder_Ptr sh, const char *filepath) {
 
   CRL(!(fseek(f, 0, SEEK_END) < 0)); // !!! NOOOO !!!
   size_t filen = ftell(f);
-  CRL(!(fseek(f, 0, SEEK_SET) <
-        0)); // this is not enoght, we should close the file.
+  CRL(!(fseek(f, 0, SEEK_SET) < 0)); // this is not enoght, we should close the file.
   v_alloc_add(sh, filen);
   fread(sh->items + sh->count, filen, 1, f);
-  sh->count += filen;
+  sh->count =sh->count+ filen;
 
   fclose(f);
 
+  fprintf(stderr,"hallo???\n");
+  fprintf(stderr,"filen = %zu\n", filen);
+  fflush(stderr);
   return true;
 }
 bool write_file(String_Holder_Ptr sh, const char *path)

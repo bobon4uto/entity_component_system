@@ -273,11 +273,51 @@ ok, maybe there are possibilities for other types, but how exactly?
 
 I really tried to integrate with macros but _Generic is just so bad i cant
 
+it looked like i needed to create a whole language JUST for that, because making it work is possible, but making it pretty? hell nah.
+all because my typeX cant work because of stupid _Generic, eg:
+
+IF it did fold, then
+int: add_int_comp(X)
+float: add_float_comp(X)
+chat_ptr: add_char_ptr_comp(X)
+
+would not be checked with "wrong" types. eg
+
+int: add_int_comp(1)
+float: add_float_comp(1)
+chat_ptr: add_char_ptr_comp(1)
+
+int: add_int_comp(1.0f)
+float: add_float_comp(1.0f)
+chat_ptr: add_char_ptr_comp(1.0f)
+
+int: add_int_comp("a")
+float: add_float_comp("a")
+chat_ptr: add_char_ptr_comp("a")
+
+compiler will complain in all of thouse.
+casting does not help, as when we introduce structs into the mics it all falls
+I know there are templates in cpp, but using cpp for this feels overkill, i just want a macro that will just 
+just put the type name and nothing else!!!!
+holup what is typeof gcc ext????
+
+nvmnd typeof also doesnt simplify (it stays typeof() like. why. what.)
+i need a lexer... i do think so. only if i manage to integrate with c typedef system and generate nececarry files to make bacically templates may i able to achieve my dream...
+but i also can do it semi-manually, just define a list and do add_type_comp :/
+BUT ALSO!!!! what. what if i mandate that only typedef-ed things can be components? then, the list will be implicit, i will just have to go through my files and find all typedefs and thats it. for now its one file but i gotta remember when i add more. (it still wont fix generic though.)
 
 
+OMG I MADE IT
 
+```c
+#define _VUPS_TT_JUST_TYPE(TYPE,_F, X)                                                 \
+  TYPE:  add_##TYPE##_comp(WORLD,*(TYPE*)&(_temp_var)),
+#define _TYPE_JUST_TYPE(X, T)  do {                                                       \
+  typeof(X) _temp_var = X; \
+  _Generic((X), VUPS_TYPES(T, X) VUPS_NEW_TYPES(T) default: assert("UNKNOWN")) ;} while(0)
 
+#define TYPE_JUST_TYPE(X) _TYPE_JUST_TYPE(X, _VUPS_TT_JUST_TYPE)
 
-
-
-
+```
+this is the main thing, and now both add_X_comp and world_spawn(...) work!!! although without running metam (metamacro, its utility that i made specifically for world_spawn) its limited to as many as the last call to metam (because metam looks at highest world_spawn count and generated counting macros for it.
+But now with new types generator and  this thing working its looking pretty fire ngl. because, right now im using manual types macro, but with typedefed_types macro every type i define will be able to become a component! well, I would like to cleanup some code but damn am i afraid to break something...

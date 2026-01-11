@@ -21,11 +21,9 @@ typedef enum {
 #define TYPE_ENUM(X) _TYPE_ENUM(X, _VUPS_TT_ENUM)
 
 #define _VUPS_TT_JUST_TYPE(TYPE,_F, X)                                                 \
-  TYPE:  add_##TYPE##_comp(WORLD,*(TYPE*)&(_temp_var)),
-#define _TYPE_JUST_TYPE(X, T)  do {                                                       \
-  typeof(X) _temp_var = X; \
-  _Generic((X), VUPS_TYPES(T, X) VUPS_NEW_TYPES(T) default: assert("UNKNOWN")) ;} while(0)
-
+  TYPE: add_##TYPE##_comp(WORLD,(X)),
+#define _TYPE_JUST_TYPE(X, T)                                                         \
+  _Generic((X), VUPS_TYPES(T, X) VUPS_NEW_TYPES(T) default: assert("UNKNOWN"))
 #define TYPE_JUST_TYPE(X) _TYPE_JUST_TYPE(X, _VUPS_TT_JUST_TYPE)
 
 typedef struct Entity {
@@ -126,13 +124,9 @@ int main() {
 #define MACROFUNC(X) add_X_comp ( (X) );
 #define MACROEND world_end_spawn(world)
 #include "src/gen/main.gen.c"
-//_VUPS_TT_JUST_TYPE(typeof(1),"", 1);
-int a=4;
-world_spawn(5, "a", (Bytes){0});
-  add_X_comp ( a );
-  add_X_comp ( (u8)1 );
-  //add_X_comp ( (Bytes){0} );
-//PROBE("a");
+  add_X_comp ( 1 );
+  add_X_comp ( (Bytes){0} );
+PROBE("a");
   //world_spawn("a","b","c");
 
 
@@ -150,7 +144,7 @@ world_spawn(5, "a", (Bytes){0});
 #define _PRINT_COMPONENT_TYPE_ARRAY(TYPE,_F,_X) printf(#TYPE " = %zu\n",TYPE##s.count);
 VUPS_TYPES(_PRINT_COMPONENT_TYPE_ARRAY, 0)
  // DA_char_ptr cp = char_ptrs;
-  //printf("%p",char_ptrs.items[0]);
+  printf("%p",char_ptrs.items[0]);
  // printf("%s",char_ptrs.items[0]);
   //for (u i = 0; i< char_ptrs.count; ++i) {
   //  PROBE(char_ptrs.items[i]);
