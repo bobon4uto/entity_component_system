@@ -65,7 +65,7 @@ Archetype	src/main.c	/^typedef struct Archetype  {$/;"	s	file:
 Archetype	src/main.c	/^} Archetype;$/;"	t	typeref:struct:Archetype	file:
 Arena	src/vups.h	/^} Arena;$/;"	t	typeref:struct:__anon810325200108
 BASE_ARENA_CAPACITY	src/vups.h	/^#define BASE_ARENA_CAPACITY /;"	d
-Byte	src/main.c	/^typedef u8 Byte;$/;"	t	typeref:typename:u8	file:
+Byte	src/main.c	/^\/*#*\/typedef u8 Byte;$/;"	t	typeref:typename:u8	file:
 Byte_Ptr	src/main.c	/^typedef Byte* Byte_Ptr;$/;"	t	typeref:typename:Byte *	file:
 CR	src/vups.h	/^#define CR(/;"	d
 CRL	src/vups.h	/^#define CRL(/;"	d
@@ -108,6 +108,8 @@ String_Holder_Ptr	src/vups.h	/^typedef String_Holder *String_Holder_Ptr;$/;"	t	t
 String_Variable_Slice	src/vups.h	/^} String_Variable_Slice;$/;"	t	typeref:struct:__anon810325200308
 String_Variable_Slice_Ptr	src/vups.h	/^typedef String_Variable_Slice *String_Variable_Slice_Ptr;$/;"	t	typeref:typename:String_Variable_Slice *
 TODO	src/vups.h	/^#define TODO(/;"	d
+TYPEDEF_TYPES	src/gen/types.h	/^#define TYPEDEF_TYPES(/;"	d
+TYPEDEF_TYPES	src/main.c	/^  TYPEDEF_TYPES(_VUPS_TT_ENUM_DEF, 0)$/;"	e	enum:__anon6a96e1720103	file:
 TYPE_ENUM	src/main.c	/^#define TYPE_ENUM(X) _TYPE_ENUM(/;"	d	file:
 TYPE_JUST_TYPE	src/main.c	/^#define TYPE_JUST_TYPE(X) _TYPE_JUST_TYPE(/;"	d	file:
 UNKNOWN	src/main.c	/^  UNKNOWN,$/;"	e	enum:__anon6a96e1720103	file:
@@ -119,7 +121,6 @@ VUPS_IMPLEMENTATION	src/main.c	/^#define VUPS_IMPLEMENTATION$/;"	d	file:
 VUPS_IMPLEMENTATION	src/util/metam.c	/^#define VUPS_IMPLEMENTATION$/;"	d	file:
 VUPS_NEW_TYPES	src/vups.h	/^#define VUPS_NEW_TYPES(/;"	d
 VUPS_TYPES	src/ecs.pp.c	/^#define VUPS_TYPES(/;"	d	file:
-VUPS_TYPES	src/main.c	/^  VUPS_TYPES(_VUPS_TT_ENUM_DEF, 0)$/;"	e	enum:__anon6a96e1720103	file:
 VUPS_TYPES	src/vups.h	/^#define VUPS_TYPES(/;"	d
 V_INITIAL_CAPACITY	src/vups.h	/^#define V_INITIAL_CAPACITY /;"	d
 Vups_Type	src/main.c	/^} Vups_Type ;$/;"	t	typeref:enum:__anon6a96e1720103	file:
@@ -289,12 +290,12 @@ svs_to_sh	src/vups.h	/^String_Holder svs_to_sh(String_Variable_Slice_Ptr svs) {$
 types	src/main.c	/^  Vups_Types types;$/;"	m	struct:Archetype	typeref:typename:Vups_Types	file:
 types	src/main.c	/^  Vups_Types types;$/;"	m	struct:_Entity_Creation_Data	typeref:typename:Vups_Types	file:
 types	src/util/metam.c	/^String_Holder types (String_Holder* in) {$/;"	f	typeref:typename:String_Holder
-u	src/vups.h	/^typedef size_t   u;$/;"	t	typeref:typename:size_t
+u	src/vups.h	/^\/*#*\/typedef size_t   u;$/;"	t	typeref:typename:size_t
 u16	src/vups.h	/^typedef uint16_t u16;$/;"	t	typeref:typename:uint16_t
 u32	src/vups.h	/^typedef uint32_t u32;$/;"	t	typeref:typename:uint32_t
 u64	src/vups.h	/^typedef uint64_t u64;$/;"	t	typeref:typename:uint64_t
 u8	src/vups.h	/^typedef uint8_t  u8;$/;"	t	typeref:typename:uint8_t
-uid	src/main.c	/^typedef u32 uid;$/;"	t	typeref:typename:u32	file:
+uid	src/main.c	/^\/*#*\/typedef u32 uid;$/;"	t	typeref:typename:u32	file:
 v_alloc	src/vups.h	/^#define v_alloc(/;"	d
 v_alloc_add	src/vups.h	/^#define v_alloc_add(/;"	d
 v_append	src/vups.h	/^#define v_append(/;"	d

@@ -120,10 +120,14 @@ String_Holder meta_macro_get_type (String_Holder* in,u position) {
 String_Holder types (String_Holder* in) {
   String_Holder out0 = {0};
   String_Holder* out = &out0 ;
+  bool macro = false;
       sh_appendf(out, "#define TYPEDEF_TYPES(T,X) \\\n");
   for ( u i = 0;i<in->count;++i) {
+    char c = in->items[i];
+    if (c=='#') macro=true;
+    if (c=='\n') macro=false;
   //  printf("comparing: (%*s == %s)", (i32)target_function_len, in.items + i, target_function);
-    if (0==strncmp(in->items + i, "typedef", strlen("typedef"))) {
+    if (!macro&&0==strncmp(in->items + i, "typedef", strlen("typedef"))) {
       String_Holder gotten_type = meta_macro_get_type (in, i);
         if (gotten_type.count) {
       sh_appendf(out, "T(");

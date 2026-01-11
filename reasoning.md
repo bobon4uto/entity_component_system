@@ -321,3 +321,6 @@ OMG I MADE IT
 ```
 this is the main thing, and now both add_X_comp and world_spawn(...) work!!! although without running metam (metamacro, its utility that i made specifically for world_spawn) its limited to as many as the last call to metam (because metam looks at highest world_spawn count and generated counting macros for it.
 But now with new types generator and  this thing working its looking pretty fire ngl. because, right now im using manual types macro, but with typedefed_types macro every type i define will be able to become a component! well, I would like to cleanup some code but damn am i afraid to break something...
+
+it didnt look that dirty, and i made simple logic to skip typedef (because defining two compatible types for generic is bad) if i put # before it. It also skips macros wiith typedefs in them (that was the main goal actually) but also if you do /*#*/ it will treat typedef as in macro, hence, skip it.
+

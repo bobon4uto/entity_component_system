@@ -1,30 +1,29 @@
 #define VUPS_IMPLEMENTATION
 #include "vups.h"
 
-typedef u32 uid;
+#include "gen/types.h"
 
-
-
+/*#*/typedef u32 uid;
 
 
 #define _VUPS_TT_ENUM_DEF(TYPE, FORMAT,_X)                                                 \
   TYPE_##TYPE,
 typedef enum {
   UNKNOWN,
-  VUPS_TYPES(_VUPS_TT_ENUM_DEF, 0)
+  TYPEDEF_TYPES(_VUPS_TT_ENUM_DEF, 0)
 } Vups_Type ;
 #define _VUPS_TT_ENUM(TYPE, FORMAT)                                                 \
   TYPE:                                                                        \
   TYPE_##TYPE,
 #define _TYPE_ENUM(X, T)                                                         \
-  _Generic((X), VUPS_TYPES(T, X) VUPS_NEW_TYPES(T) default: UNKNOWN)
+  _Generic((X), TYPEDEF_TYPES(T, X) VUPS_NEW_TYPES(T) default: UNKNOWN)
 #define TYPE_ENUM(X) _TYPE_ENUM(X, _VUPS_TT_ENUM)
 
 #define _VUPS_TT_JUST_TYPE(TYPE,_F, X)                                                 \
   TYPE:  add_##TYPE##_comp(WORLD,*(TYPE*)&(_temp_var)),
 #define _TYPE_JUST_TYPE(X, T)  do {                                                       \
   typeof(X) _temp_var = X; \
-  _Generic((X), VUPS_TYPES(T, X) VUPS_NEW_TYPES(T) default: assert("UNKNOWN")) ;} while(0)
+  _Generic((X), TYPEDEF_TYPES(T, X) VUPS_NEW_TYPES(T) default: assert("UNKNOWN")) ;} while(0)
 
 #define TYPE_JUST_TYPE(X) _TYPE_JUST_TYPE(X, _VUPS_TT_JUST_TYPE)
 
@@ -34,7 +33,7 @@ typedef struct Entity {
   char_ptr ch;
 
 } Entity;
-typedef u8 Byte;
+/*#*/typedef u8 Byte;
 typedef Byte* Byte_Ptr;
 DA_TYPE(Byte,Bytes);
 DA_TYPE(Byte_Ptr,Byte_Ptrs);
@@ -79,12 +78,12 @@ bool world_start_spawn(World* world) {
   v_append(types, TYPE_##TYPE); \
 } \
 
-VUPS_TYPES(_MK_COMPONENT_TYPE_FUNCTION, 0)
+TYPEDEF_TYPES(_MK_COMPONENT_TYPE_FUNCTION, 0)
 
 #define _MK_COMPONENT_TYPE_ARRAY_TYPE(TYPE,_F,_X) DA_TYPE(TYPE,DA_##TYPE);
-VUPS_TYPES(_MK_COMPONENT_TYPE_ARRAY_TYPE, 0)
-#define _MK_COMPONENT_TYPE_ARRAY(TYPE,_F,_X) DA_##TYPE TYPE##s = {0};
-VUPS_TYPES(_MK_COMPONENT_TYPE_ARRAY, 0)
+TYPEDEF_TYPES(_MK_COMPONENT_TYPE_ARRAY_TYPE, 0)
+#define _MK_COMPONENT_TYPE_ARRAY(TYPE,_F,_X) DA_##TYPE TYPE##_da = {0};
+TYPEDEF_TYPES(_MK_COMPONENT_TYPE_ARRAY, 0)
 
 uid world_end_spawn(World *world) {
   // figure out where to put components (for now just push to columns with corresponding types.)
@@ -94,10 +93,10 @@ uid world_end_spawn(World *world) {
 
   for(u i = 0; i<types.count; ++i) {
     switch (types.items[i]) {
-#define _MK_COMPONENT_CASE_(TYPE,_F,_X) case TYPE_##TYPE : v_append((&TYPE##s), *((TYPE *) (world->_entity_creation_data.data.items+j)) ); \
+#define _MK_COMPONENT_CASE_(TYPE,_F,_X) case TYPE_##TYPE : v_append((&TYPE##_da), *((TYPE *) (world->_entity_creation_data.data.items+j)) ); \
       j += sizeof(TYPE); \
       break;
-VUPS_TYPES(_MK_COMPONENT_CASE_, 0 )
+TYPEDEF_TYPES(_MK_COMPONENT_CASE_, 0 )
   // for some reason it breaks if i pass world->...items as X to macro.
   // nevermind i forgor that it was format
       default: assert("IMPOSSIBLE!");
@@ -127,10 +126,9 @@ int main() {
 #define MACROEND world_end_spawn(world)
 #include "src/gen/main.gen.c"
 //_VUPS_TT_JUST_TYPE(typeof(1),"", 1);
-int a=4;
-world_spawn(5, "a", (Bytes){0});
-  add_X_comp ( a );
-  add_X_comp ( (u8)1 );
+//
+
+world_spawn(5, "a", (String_Holder){0});
   //add_X_comp ( (Bytes){0} );
 //PROBE("a");
   //world_spawn("a","b","c");
@@ -147,8 +145,8 @@ world_spawn(5, "a", (Bytes){0});
   }
   uid entity_id = world_end_spawn(world);
   (void)entity_id;
-#define _PRINT_COMPONENT_TYPE_ARRAY(TYPE,_F,_X) printf(#TYPE " = %zu\n",TYPE##s.count);
-VUPS_TYPES(_PRINT_COMPONENT_TYPE_ARRAY, 0)
+#define _PRINT_COMPONENT_TYPE_ARRAY(TYPE,_F,_X) printf(#TYPE " = %zu\n",TYPE##_da.count);
+TYPEDEF_TYPES(_PRINT_COMPONENT_TYPE_ARRAY, 0)
  // DA_char_ptr cp = char_ptrs;
   //printf("%p",char_ptrs.items[0]);
  // printf("%s",char_ptrs.items[0]);

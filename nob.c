@@ -119,14 +119,8 @@ bool prepare() {
 }
 bool preprocess() {
   bool ret = true;
-  //cc();
-  //pp_only();
-  //cc_inputs(cmd, SRC_FOLDER );
-  //cc_output(cmd, GEN_FOLDER GEN_FILE);
-  //CR(run(cmd));
-
-  //cmd_append(cmd, "cat", GEN_FOLDER GEN_FILE);
-  //CR(run(cmd));
+  cmd_append(cmd,BUILD_UTIL_FOLDER METAM_EXECUTABLE, "./src/main.c","./src/vups.h", "-m","types", "-o", "./src/gen/types.h");
+  run(cmd);
 
   return ret;
 }
@@ -151,7 +145,7 @@ bool build() {
   bool ret = true;
 
   build_general(UTIL_FOLDER METAM_FILE, BUILD_UTIL_FOLDER METAM_EXECUTABLE);
-  //preprocess();
+  preprocess();
   build_general(SRC_FOLDER TEST_FILE, BUILD_FOLDER TEST_EXECUTABLE);
 
   return ret;
