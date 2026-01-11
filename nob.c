@@ -17,12 +17,24 @@ void cc() {
   cmd_append(cmd, "-g");
   cmd_append(cmd, "-O0");
 }
+void pp_only() {
+  cmd_append(cmd, "-E");
+}
 
 #define BUILD_FOLDER "build/"
+#define BUILD_UTIL_FOLDER BUILD_FOLDER "util/"
+#define BUILD_TEST_FOLDER BUILD_FOLDER "test/"
 #define SRC_FOLDER "src/"
+#define UTIL_FOLDER SRC_FOLDER "util/"
+#define GEN_FOLDER SRC_FOLDER "gen/"
+
+#define METAM_FILE "metam.c"
+#define METAM_EXECUTABLE "metam"
 
 #define TEST_FILE "main.c"
 #define TEST_EXECUTABLE "main"
+
+#define GEN_FILE "main.gen.c"
 
 #define CR(X)                                                                  \
   ret &= X;                                                                    \
@@ -33,7 +45,9 @@ void cc() {
 
 // functions that return boolean via ret variable
 bool bmain(int argc, char **argv);
+bool build_general(const char* in, const char* out);
 bool prepare();
+bool preprocess();
 bool build();
 bool test();
 bool clean();
@@ -98,21 +112,68 @@ bool bmain(int argc, char **argv) {
 bool prepare() {
   bool ret = true;
   CR(mkdir_if_not_exists(BUILD_FOLDER));
+  CR(mkdir_if_not_exists(BUILD_UTIL_FOLDER));
+  CR(mkdir_if_not_exists(BUILD_TEST_FOLDER));
 
+  return ret;
+}
+bool preprocess() {
+  bool ret = true;
+  //cc();
+  //pp_only();
+  //cc_inputs(cmd, SRC_FOLDER );
+  //cc_output(cmd, GEN_FOLDER GEN_FILE);
+  //CR(run(cmd));
+
+  //cmd_append(cmd, "cat", GEN_FOLDER GEN_FILE);
+  //CR(run(cmd));
+
+  return ret;
+}
+bool build_general_no_check(const char* in, const char* out) { 
+  bool ret = true;
+    cc();
+    cc_inputs(cmd, in);
+    cc_output(cmd, out);
+    CR(run(cmd));
+  return ret;
+}
+
+bool build_general(const char* in, const char* out) {
+  bool ret = true;
+  if (nob_needs_rebuild1(out, SRC_FOLDER "vups.h") || nob_needs_rebuild1(out, in)) {
+    build_general_no_check(in, out);
+  }
   return ret;
 }
 
 bool build() {
   bool ret = true;
-  cc();
-  cc_inputs(cmd, SRC_FOLDER TEST_FILE);
-  cc_output(cmd, BUILD_FOLDER TEST_EXECUTABLE);
-  CR(run(cmd));
 
+  build_general(UTIL_FOLDER METAM_FILE, BUILD_UTIL_FOLDER METAM_EXECUTABLE);
+  //preprocess();
+  build_general(SRC_FOLDER TEST_FILE, BUILD_FOLDER TEST_EXECUTABLE);
+
+  return ret;
+}
+bool test_metam() {
+  bool ret = true;
+  nob_log(INFO,"testing metam");
+  cmd_append(cmd,BUILD_UTIL_FOLDER METAM_EXECUTABLE, "./src/tests/metam_test_1.c", "-f", "print", "-o", "./src/tests/metam_test_1.c.gen.c");
+  run(cmd);
+  CR(build_general_no_check("src/tests/metam_test_1.c", "build/test/metam_test_1"));
+  cmd_append(cmd,"build/test/metam_test_1");
+  CR(run(cmd));
+  nob_log(INFO,"test metam_test_1 >>passed<<");
   return ret;
 }
 bool test() {
   bool ret = true;
+  test_metam();
+
+
+  cmd_append(cmd, BUILD_UTIL_FOLDER METAM_EXECUTABLE, SRC_FOLDER TEST_FILE,"-f", "world_spawn", "-o", GEN_FOLDER GEN_FILE);
+  run(cmd);
   cmd_append(cmd, BUILD_FOLDER TEST_EXECUTABLE);
   run(cmd);
   return ret;

@@ -267,3 +267,17 @@ and we cant use macros to generate macros, #define doesnt work inside a macro!
 
 you know what works though? codegen. I dont really want to do world_spawn in macros anymore, so less go
 
+i guess my main problem is _Generic cause it doesnt simplify (like bro, you KNOW it's int, do your job bru)
+
+ok, maybe there are possibilities for other types, but how exactly?
+
+I really tried to integrate with macros but _Generic is just so bad i cant
+
+
+
+
+
+
+
+
+

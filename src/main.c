@@ -3,7 +3,6 @@
 
 typedef u32 uid;
 
-uid world_spawn(...);
 
 
 
@@ -22,11 +21,10 @@ typedef enum {
 #define TYPE_ENUM(X) _TYPE_ENUM(X, _VUPS_TT_ENUM)
 
 #define _VUPS_TT_JUST_TYPE(TYPE,_F, X)                                                 \
-  TYPE: add_##TYPE##_comp(WORLD,(TYPE)X),
+  TYPE: add_##TYPE##_comp(WORLD,(X)),
 #define _TYPE_JUST_TYPE(X, T)                                                         \
   _Generic((X), VUPS_TYPES(T, X) VUPS_NEW_TYPES(T) default: assert("UNKNOWN"))
 #define TYPE_JUST_TYPE(X) _TYPE_JUST_TYPE(X, _VUPS_TT_JUST_TYPE)
-//#define world_spawn(...) __VA_ARGS__
 
 typedef struct Entity {
   uid id;
@@ -56,7 +54,6 @@ typedef struct _Entity_Creation_Data  {
 typedef struct World {
   uid id;
   Entity entity;
-// for world_spawn
   _Entity_Creation_Data _entity_creation_data;
 } World;
 
@@ -84,7 +81,7 @@ VUPS_TYPES(_MK_COMPONENT_TYPE_FUNCTION, 0)
 
 #define _MK_COMPONENT_TYPE_ARRAY_TYPE(TYPE,_F,_X) DA_TYPE(TYPE,DA_##TYPE);
 VUPS_TYPES(_MK_COMPONENT_TYPE_ARRAY_TYPE, 0)
-#define _MK_COMPONENT_TYPE_ARRAY(TYPE,_F,_X) DA_##TYPE TYPE##s;
+#define _MK_COMPONENT_TYPE_ARRAY(TYPE,_F,_X) DA_##TYPE TYPE##s = {0};
 VUPS_TYPES(_MK_COMPONENT_TYPE_ARRAY, 0)
 
 uid world_end_spawn(World *world) {
@@ -123,24 +120,16 @@ VUPS_TYPES(_MK_COMPONENT_CASE_, 0 )
 int main() {
   World world0 ={0};
   World* world =&world0;
-  //PROBE(TYPE_ENUM(1));
-  //PROBE(TYPE_ENUM("a"));
-
-  world_start_spawn(world);
-  add_u8_comp (world, 3);
-  //TYPE_JUST_TYPE(1) a;
-  add_X_comp ( (u8)1 );
+#define MACROBEGIN world_start_spawn(world);
+#define MACROFUNC(X) add_X_comp ( (X) );
+#define MACROEND world_end_spawn(world)
+#include "src/gen/main.gen.c"
   add_X_comp ( 1 );
-  add_i32_comp(world, 2);
-  add_i8_comp (world, 3);
-  add_u8_comp (world, 3);
-  add_i16_comp(world, 4);
-  add_i64_comp(world, 5);
-  add_f32_comp(world, 3.0f);
-  add_f64_comp(world, 4.0);
+  add_X_comp ( (Bytes){0} );
+PROBE("a");
+  //world_spawn("a","b","c");
 
-  //add_u8_comp(world, 3);
-  add_char_ptr_comp(world, "a");
+
   Vups_Types types = world->_entity_creation_data.types;
   Bytes data = world->_entity_creation_data.data;
   PROBE(types.count);
@@ -152,9 +141,14 @@ int main() {
   }
   uid entity_id = world_end_spawn(world);
   (void)entity_id;
-  for (u i = 0; i< u8s.count; ++i) {
-    PROBE(u8s.items[i]);
-  }
+#define _PRINT_COMPONENT_TYPE_ARRAY(TYPE,_F,_X) printf(#TYPE " = %zu\n",TYPE##s.count);
+VUPS_TYPES(_PRINT_COMPONENT_TYPE_ARRAY, 0)
+ // DA_char_ptr cp = char_ptrs;
+  printf("%p",char_ptrs.items[0]);
+ // printf("%s",char_ptrs.items[0]);
+  //for (u i = 0; i< char_ptrs.count; ++i) {
+  //  PROBE(char_ptrs.items[i]);
+  //}
 
   return 0;
 }

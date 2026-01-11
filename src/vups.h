@@ -32,12 +32,20 @@ typedef char* char_ptr;
 typedef const char* const_char_ptr;
 #define VUPS_TYPES(T, X)                                                       \
   T(size_t, "%zu", X) \
-  T(u8, "%u",X) T(u16, "%u",X) T(u32, "%u",X) \
-  T(i8, "%d",X) T(i16, "%d",X) T(i32, "%d",X) T(i64, "%d",X) \
-  T(f32, "%f",X) T(f64, "%lf",X) \
-  T(char_ptr, "%s",X)             \
-      T(char, "%c",X) T(const_char_ptr, "%s",X)                                    \
-      T(bool, X ? "true(%0b)" : "false(%0b)",X)
+  T(u8, "%u",X) \
+  T(u16, "%u",X) \
+  T(u32, "%u",X) \
+  T(i8, "%d",X) \
+  T(i16, "%d",X) \
+  T(i32, "%d",X) \
+  T(i64, "%d",X) \
+  T(f32, "%f",X) \
+  T(f64, "%lf",X) \
+  /*T(char_ptr, "%s",X)*/             \
+      T(char, "%c",X) /*T(const_char_ptr, "%s",X) */                                   \
+      T(bool, X ? "true(%0b)" : "false(%0b)",X)\
+  T(Bytes, "",X) \
+
 #endif
 
 #ifndef VUPSDEF
@@ -439,21 +447,42 @@ String_Holder svs_to_sh(String_Variable_Slice_Ptr svs) {
 //					  ^^^IO^^^
 //==============================================================================
 bool read_file(String_Holder_Ptr sh, const char *filepath) {
-  PROBE(filepath);
   FILE *f = fopen(filepath, "r");
   CRL(f);
 
-  PROBE((f));
   CRL(!(fseek(f, 0, SEEK_END) < 0)); // !!! NOOOO !!!
   size_t filen = ftell(f);
   CRL(!(fseek(f, 0, SEEK_SET) <
         0)); // this is not enoght, we should close the file.
   v_alloc_add(sh, filen);
   fread(sh->items + sh->count, filen, 1, f);
+  sh->count = filen;
 
   fclose(f);
 
   return true;
+}
+bool write_file(String_Holder_Ptr sh, const char *path)
+{
+    bool result = true;
+
+    const char *buf = NULL;
+    FILE *f = fopen(path, "wb");
+    if (f == NULL) {
+      assert("DIDN'T OPEN FILE");
+    }
+    buf = (const char*)sh->items;
+    u size = sh->count;
+    while (size > 0) {
+        size_t n = fwrite(buf, 1, size, f);
+        if (ferror(f)) {
+          assert("DIDN'T WRITE TO FILE");
+        }
+        size -= n;
+        buf  += n;
+    }
+
+    return result;
 }
 //==============================================================================
 //					  ^^^IO^^^

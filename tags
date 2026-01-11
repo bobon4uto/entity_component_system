@@ -70,13 +70,32 @@ Byte_Ptr	src/main.c	/^typedef Byte* Byte_Ptr;$/;"	t	typeref:typename:Byte *	file
 CR	src/vups.h	/^#define CR(/;"	d
 CRL	src/vups.h	/^#define CRL(/;"	d
 DA_TYPE	src/vups.h	/^#define DA_TYPE(/;"	d
+DECLTYPE	src/ecs.pp.c	/^#define DECLTYPE(/;"	d	file:
 DECLTYPE	src/vups.h	/^#define DECLTYPE(/;"	d
 Entity	src/main.c	/^typedef struct Entity {$/;"	s	file:
 Entity	src/main.c	/^} Entity;$/;"	t	typeref:struct:Entity	file:
+FORMAT	src/ecs.pp.c	/^#define FORMAT(/;"	d	file:
 FORMAT	src/vups.h	/^#define FORMAT(/;"	d
+HELLO	src/ecs.pp.c	/^#define HELLO /;"	d	file:
+MACROBEGIN	src/gen/ecs.gen.c	/^#define MACROBEGIN$/;"	d	file:
+MACROBEGIN	src/gen/main.gen.c	/^#define MACROBEGIN$/;"	d	file:
+MACROBEGIN	src/main.c	/^#define MACROBEGIN /;"	d	file:
+MACROBEGIN	src/tests/metam_test_1.c	/^#define MACROBEGIN /;"	d	file:
+MACROBEGIN	src/tests/metam_test_1.c.gen.c	/^#define MACROBEGIN$/;"	d	file:
+MACROEND	src/gen/ecs.gen.c	/^#define MACROEND$/;"	d	file:
+MACROEND	src/gen/main.gen.c	/^#define MACROEND$/;"	d	file:
+MACROEND	src/main.c	/^#define MACROEND /;"	d	file:
+MACROEND	src/tests/metam_test_1.c	/^#define MACROEND /;"	d	file:
+MACROEND	src/tests/metam_test_1.c.gen.c	/^#define MACROEND$/;"	d	file:
+MACROFUNC	src/main.c	/^#define MACROFUNC(/;"	d	file:
+MACROFUNC	src/tests/metam_test_1.c	/^#define MACROFUNC(/;"	d	file:
+PRINT	src/ecs.pp.c	/^#define PRINT(/;"	d	file:
 PRINT	src/vups.h	/^#define PRINT(/;"	d
+PRINTAT	src/ecs.pp.c	/^#define PRINTAT(/;"	d	file:
 PRINTAT	src/vups.h	/^#define PRINTAT(/;"	d
+PRINTF	src/ecs.pp.c	/^#define PRINTF(/;"	d	file:
 PRINTF	src/vups.h	/^#define PRINTF(/;"	d
+PROBE	src/ecs.pp.c	/^#define PROBE(/;"	d	file:
 PROBE	src/vups.h	/^#define PROBE(/;"	d
 PTR	src/vups.h	/^#define PTR(/;"	d
 R	src/vups.h	/^#define R return RE/;"	d
@@ -95,7 +114,9 @@ VUPS_END_SEMI	src/vups.h	/^#define VUPS_END_SEMI /;"	d
 VUPS_END_SEMI	src/vups.h	/^#define VUPS_END_SEMI$/;"	d
 VUPS_H_	src/vups.h	/^#define VUPS_H_$/;"	d
 VUPS_IMPLEMENTATION	src/main.c	/^#define VUPS_IMPLEMENTATION$/;"	d	file:
+VUPS_IMPLEMENTATION	src/util/metam.c	/^#define VUPS_IMPLEMENTATION$/;"	d	file:
 VUPS_NEW_TYPES	src/vups.h	/^#define VUPS_NEW_TYPES(/;"	d
+VUPS_TYPES	src/ecs.pp.c	/^#define VUPS_TYPES(/;"	d	file:
 VUPS_TYPES	src/main.c	/^  VUPS_TYPES(_VUPS_TT_ENUM_DEF, 0)$/;"	e	enum:__anon6a96e1720103	file:
 VUPS_TYPES	src/vups.h	/^#define VUPS_TYPES(/;"	d
 V_INITIAL_CAPACITY	src/vups.h	/^#define V_INITIAL_CAPACITY /;"	d
@@ -109,9 +130,12 @@ _MK_COMPONENT_CASE_	src/main.c	/^#define _MK_COMPONENT_CASE_(/;"	d	file:
 _MK_COMPONENT_TYPE_ARRAY	src/main.c	/^#define _MK_COMPONENT_TYPE_ARRAY(/;"	d	file:
 _MK_COMPONENT_TYPE_ARRAY_TYPE	src/main.c	/^#define _MK_COMPONENT_TYPE_ARRAY_TYPE(/;"	d	file:
 _MK_COMPONENT_TYPE_FUNCTION	src/main.c	/^#define _MK_COMPONENT_TYPE_FUNCTION(/;"	d	file:
+_PRINT_COMPONENT_TYPE_ARRAY	src/main.c	/^#define _PRINT_COMPONENT_TYPE_ARRAY(/;"	d	file:
 _TYPE_ENUM	src/main.c	/^#define _TYPE_ENUM(/;"	d	file:
 _TYPE_JUST_TYPE	src/main.c	/^#define _TYPE_JUST_TYPE(/;"	d	file:
+_VUPS_TF	src/ecs.pp.c	/^#define _VUPS_TF(/;"	d	file:
 _VUPS_TF	src/vups.h	/^#define _VUPS_TF(/;"	d
+_VUPS_TT	src/ecs.pp.c	/^#define _VUPS_TT(/;"	d	file:
 _VUPS_TT	src/vups.h	/^#define _VUPS_TT(/;"	d
 _VUPS_TT_ENUM	src/main.c	/^#define _VUPS_TT_ENUM(/;"	d	file:
 _VUPS_TT_ENUM_DEF	src/main.c	/^#define _VUPS_TT_ENUM_DEF(/;"	d	file:
@@ -122,6 +146,9 @@ __anon810325200208	src/vups.h	/^typedef struct {$/;"	s
 __anon810325200308	src/vups.h	/^typedef struct {$/;"	s
 _a_var_opt	src/vups.h	/^u8 *_a_var_opt(Arena *a, size_t size, bool zero_init, bool do_double) {$/;"	f	typeref:typename:u8 *
 _entity_creation_data	src/main.c	/^  _Entity_Creation_Data _entity_creation_data;$/;"	m	struct:World	typeref:typename:_Entity_Creation_Data	file:
+_print_COUNT	src/tests/metam_test_1.c.gen.c	/^#define _print_COUNT(/;"	d	file:
+_world_spawn_COUNT	src/gen/ecs.gen.c	/^#define _world_spawn_COUNT(/;"	d	file:
+_world_spawn_COUNT	src/gen/main.gen.c	/^#define _world_spawn_COUNT(/;"	d	file:
 a_clear	src/vups.h	/^u8 *a_clear(Arena *a) { a->count = 0; return a->items;}$/;"	f	typeref:typename:u8 *
 a_var	src/vups.h	/^u8 *a_var(Arena *a, size_t size) { return _a_var_opt(a, size, true, false); }$/;"	f	typeref:typename:u8 *
 add_X_comp	src/main.c	/^#define add_X_comp(/;"	d	file:
@@ -146,9 +173,96 @@ id	src/main.c	/^  uid id;$/;"	m	struct:Entity	typeref:typename:uid	file:
 id	src/main.c	/^  uid id;$/;"	m	struct:World	typeref:typename:uid	file:
 items	src/vups.h	/^  char *items;$/;"	m	struct:__anon810325200208	typeref:typename:char *
 items	src/vups.h	/^  u8 *items;$/;"	m	struct:__anon810325200108	typeref:typename:u8 *
+main	src/ecs.pp.c	/^int main() {$/;"	f	typeref:typename:int
 main	src/main.c	/^int main() {$/;"	f	typeref:typename:int
+main	src/tests/metam_test_1.c	/^int main(){$/;"	f	typeref:typename:int
+main	src/util/metam.c	/^int main(int argc, char **argv) {$/;"	f	typeref:typename:int
+make_meta_macro_function_infinitely_variadic	src/util/metam.c	/^String_Holder make_meta_macro_function_infinitely_variadic(u count_needed,const char* function_n/;"	f	typeref:typename:String_Holder
 may_fail	src/vups.h	/^bool may_fail() {$/;"	f	typeref:typename:bool
 may_fail_nest	src/vups.h	/^bool may_fail_nest() {$/;"	f	typeref:typename:bool
+meta_macro_count_args	src/util/metam.c	/^u meta_macro_count_args (String_Holder in, u position) {$/;"	f	typeref:typename:u
+meta_macro_count_args_for_each	src/util/metam.c	/^u meta_macro_count_args_for_each(String_Holder in, const char* target_function) {$/;"	f	typeref:typename:u
+print	src/tests/metam_test_1.c.gen.c	/^#define print(...) _print_COUNT(__VA_ARGS__, print80, print79, print78, print77, print76, print7/;"	d	file:
+print1	src/tests/metam_test_1.c.gen.c	/^#define print1(/;"	d	file:
+print10	src/tests/metam_test_1.c.gen.c	/^#define print10(/;"	d	file:
+print11	src/tests/metam_test_1.c.gen.c	/^#define print11(/;"	d	file:
+print12	src/tests/metam_test_1.c.gen.c	/^#define print12(/;"	d	file:
+print13	src/tests/metam_test_1.c.gen.c	/^#define print13(/;"	d	file:
+print14	src/tests/metam_test_1.c.gen.c	/^#define print14(/;"	d	file:
+print15	src/tests/metam_test_1.c.gen.c	/^#define print15(/;"	d	file:
+print16	src/tests/metam_test_1.c.gen.c	/^#define print16(/;"	d	file:
+print17	src/tests/metam_test_1.c.gen.c	/^#define print17(/;"	d	file:
+print18	src/tests/metam_test_1.c.gen.c	/^#define print18(/;"	d	file:
+print19	src/tests/metam_test_1.c.gen.c	/^#define print19(/;"	d	file:
+print2	src/tests/metam_test_1.c.gen.c	/^#define print2(/;"	d	file:
+print20	src/tests/metam_test_1.c.gen.c	/^#define print20(/;"	d	file:
+print21	src/tests/metam_test_1.c.gen.c	/^#define print21(/;"	d	file:
+print22	src/tests/metam_test_1.c.gen.c	/^#define print22(/;"	d	file:
+print23	src/tests/metam_test_1.c.gen.c	/^#define print23(/;"	d	file:
+print24	src/tests/metam_test_1.c.gen.c	/^#define print24(/;"	d	file:
+print25	src/tests/metam_test_1.c.gen.c	/^#define print25(/;"	d	file:
+print26	src/tests/metam_test_1.c.gen.c	/^#define print26(/;"	d	file:
+print27	src/tests/metam_test_1.c.gen.c	/^#define print27(/;"	d	file:
+print28	src/tests/metam_test_1.c.gen.c	/^#define print28(/;"	d	file:
+print29	src/tests/metam_test_1.c.gen.c	/^#define print29(/;"	d	file:
+print3	src/tests/metam_test_1.c.gen.c	/^#define print3(/;"	d	file:
+print30	src/tests/metam_test_1.c.gen.c	/^#define print30(/;"	d	file:
+print31	src/tests/metam_test_1.c.gen.c	/^#define print31(/;"	d	file:
+print32	src/tests/metam_test_1.c.gen.c	/^#define print32(/;"	d	file:
+print33	src/tests/metam_test_1.c.gen.c	/^#define print33(/;"	d	file:
+print34	src/tests/metam_test_1.c.gen.c	/^#define print34(/;"	d	file:
+print35	src/tests/metam_test_1.c.gen.c	/^#define print35(/;"	d	file:
+print36	src/tests/metam_test_1.c.gen.c	/^#define print36(/;"	d	file:
+print37	src/tests/metam_test_1.c.gen.c	/^#define print37(/;"	d	file:
+print38	src/tests/metam_test_1.c.gen.c	/^#define print38(/;"	d	file:
+print39	src/tests/metam_test_1.c.gen.c	/^#define print39(/;"	d	file:
+print4	src/tests/metam_test_1.c.gen.c	/^#define print4(/;"	d	file:
+print40	src/tests/metam_test_1.c.gen.c	/^#define print40(/;"	d	file:
+print41	src/tests/metam_test_1.c.gen.c	/^#define print41(/;"	d	file:
+print42	src/tests/metam_test_1.c.gen.c	/^#define print42(/;"	d	file:
+print43	src/tests/metam_test_1.c.gen.c	/^#define print43(/;"	d	file:
+print44	src/tests/metam_test_1.c.gen.c	/^#define print44(/;"	d	file:
+print45	src/tests/metam_test_1.c.gen.c	/^#define print45(/;"	d	file:
+print46	src/tests/metam_test_1.c.gen.c	/^#define print46(/;"	d	file:
+print47	src/tests/metam_test_1.c.gen.c	/^#define print47(/;"	d	file:
+print48	src/tests/metam_test_1.c.gen.c	/^#define print48(/;"	d	file:
+print49	src/tests/metam_test_1.c.gen.c	/^#define print49(/;"	d	file:
+print5	src/tests/metam_test_1.c.gen.c	/^#define print5(/;"	d	file:
+print50	src/tests/metam_test_1.c.gen.c	/^#define print50(/;"	d	file:
+print51	src/tests/metam_test_1.c.gen.c	/^#define print51(/;"	d	file:
+print52	src/tests/metam_test_1.c.gen.c	/^#define print52(/;"	d	file:
+print53	src/tests/metam_test_1.c.gen.c	/^#define print53(/;"	d	file:
+print54	src/tests/metam_test_1.c.gen.c	/^#define print54(/;"	d	file:
+print55	src/tests/metam_test_1.c.gen.c	/^#define print55(/;"	d	file:
+print56	src/tests/metam_test_1.c.gen.c	/^#define print56(/;"	d	file:
+print57	src/tests/metam_test_1.c.gen.c	/^#define print57(/;"	d	file:
+print58	src/tests/metam_test_1.c.gen.c	/^#define print58(/;"	d	file:
+print59	src/tests/metam_test_1.c.gen.c	/^#define print59(/;"	d	file:
+print6	src/tests/metam_test_1.c.gen.c	/^#define print6(/;"	d	file:
+print60	src/tests/metam_test_1.c.gen.c	/^#define print60(/;"	d	file:
+print61	src/tests/metam_test_1.c.gen.c	/^#define print61(/;"	d	file:
+print62	src/tests/metam_test_1.c.gen.c	/^#define print62(/;"	d	file:
+print63	src/tests/metam_test_1.c.gen.c	/^#define print63(/;"	d	file:
+print64	src/tests/metam_test_1.c.gen.c	/^#define print64(/;"	d	file:
+print65	src/tests/metam_test_1.c.gen.c	/^#define print65(/;"	d	file:
+print66	src/tests/metam_test_1.c.gen.c	/^#define print66(/;"	d	file:
+print67	src/tests/metam_test_1.c.gen.c	/^#define print67(/;"	d	file:
+print68	src/tests/metam_test_1.c.gen.c	/^#define print68(/;"	d	file:
+print69	src/tests/metam_test_1.c.gen.c	/^#define print69(/;"	d	file:
+print7	src/tests/metam_test_1.c.gen.c	/^#define print7(/;"	d	file:
+print70	src/tests/metam_test_1.c.gen.c	/^#define print70(/;"	d	file:
+print71	src/tests/metam_test_1.c.gen.c	/^#define print71(/;"	d	file:
+print72	src/tests/metam_test_1.c.gen.c	/^#define print72(/;"	d	file:
+print73	src/tests/metam_test_1.c.gen.c	/^#define print73(/;"	d	file:
+print74	src/tests/metam_test_1.c.gen.c	/^#define print74(/;"	d	file:
+print75	src/tests/metam_test_1.c.gen.c	/^#define print75(/;"	d	file:
+print76	src/tests/metam_test_1.c.gen.c	/^#define print76(/;"	d	file:
+print77	src/tests/metam_test_1.c.gen.c	/^#define print77(/;"	d	file:
+print78	src/tests/metam_test_1.c.gen.c	/^#define print78(/;"	d	file:
+print79	src/tests/metam_test_1.c.gen.c	/^#define print79(/;"	d	file:
+print8	src/tests/metam_test_1.c.gen.c	/^#define print8(/;"	d	file:
+print80	src/tests/metam_test_1.c.gen.c	/^#define print80(/;"	d	file:
+print9	src/tests/metam_test_1.c.gen.c	/^#define print9(/;"	d	file:
 read_file	src/vups.h	/^bool read_file(String_Holder_Ptr sh, const char *filepath) {$/;"	f	typeref:typename:bool
 sh	src/vups.h	/^  String_Holder_Ptr sh;$/;"	m	struct:__anon810325200308	typeref:typename:String_Holder_Ptr
 sh_append	src/vups.h	/^void sh_append(String_Holder_Ptr sh, char c) {$/;"	f	typeref:typename:void
@@ -181,4 +295,28 @@ v_double	src/vups.h	/^#define v_double(/;"	d
 v_free	src/vups.h	/^#define v_free(/;"	d
 v_prealloc	src/vups.h	/^#define v_prealloc(/;"	d
 world_end_spawn	src/main.c	/^uid world_end_spawn(World *world) {$/;"	f
+world_spawn	src/gen/ecs.gen.c	/^#define world_spawn(...) _world_spawn_COUNT(__VA_ARGS__, world_spawn6, world_spawn5, world_spawn/;"	d	file:
+world_spawn	src/gen/main.gen.c	/^#define world_spawn(...) _world_spawn_COUNT(__VA_ARGS__, world_spawn15, world_spawn14, world_spa/;"	d	file:
+world_spawn1	src/gen/ecs.gen.c	/^#define world_spawn1(/;"	d	file:
+world_spawn1	src/gen/main.gen.c	/^#define world_spawn1(/;"	d	file:
+world_spawn10	src/gen/main.gen.c	/^#define world_spawn10(/;"	d	file:
+world_spawn11	src/gen/main.gen.c	/^#define world_spawn11(/;"	d	file:
+world_spawn12	src/gen/main.gen.c	/^#define world_spawn12(/;"	d	file:
+world_spawn13	src/gen/main.gen.c	/^#define world_spawn13(/;"	d	file:
+world_spawn14	src/gen/main.gen.c	/^#define world_spawn14(/;"	d	file:
+world_spawn15	src/gen/main.gen.c	/^#define world_spawn15(/;"	d	file:
+world_spawn2	src/gen/ecs.gen.c	/^#define world_spawn2(/;"	d	file:
+world_spawn2	src/gen/main.gen.c	/^#define world_spawn2(/;"	d	file:
+world_spawn3	src/gen/ecs.gen.c	/^#define world_spawn3(/;"	d	file:
+world_spawn3	src/gen/main.gen.c	/^#define world_spawn3(/;"	d	file:
+world_spawn4	src/gen/ecs.gen.c	/^#define world_spawn4(/;"	d	file:
+world_spawn4	src/gen/main.gen.c	/^#define world_spawn4(/;"	d	file:
+world_spawn5	src/gen/ecs.gen.c	/^#define world_spawn5(/;"	d	file:
+world_spawn5	src/gen/main.gen.c	/^#define world_spawn5(/;"	d	file:
+world_spawn6	src/gen/ecs.gen.c	/^#define world_spawn6(/;"	d	file:
+world_spawn6	src/gen/main.gen.c	/^#define world_spawn6(/;"	d	file:
+world_spawn7	src/gen/main.gen.c	/^#define world_spawn7(/;"	d	file:
+world_spawn8	src/gen/main.gen.c	/^#define world_spawn8(/;"	d	file:
+world_spawn9	src/gen/main.gen.c	/^#define world_spawn9(/;"	d	file:
 world_start_spawn	src/main.c	/^bool world_start_spawn(World* world) {$/;"	f	typeref:typename:bool
+write_file	src/vups.h	/^bool write_file(String_Holder_Ptr sh, const char *path)$/;"	f	typeref:typename:bool
