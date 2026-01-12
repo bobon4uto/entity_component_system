@@ -327,3 +327,5 @@ it didnt look that dirty, and i made simple logic to skip typedef (because defin
 since now it looks pretty good imma implement the system part now.
 
 now that systems work its technically complete, althoigh i cannot delete or edit entities, and systems are clunky since its just a function that gets every Archetype and checks if they have needed types, then operates. 
+somehow im leaking memory somewhere although i tried to accomadate everything.
+nvmnd i forgor about archetype->types

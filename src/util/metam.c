@@ -179,6 +179,7 @@ int main(int argc, char **argv) {
           }
       }
       else v_append(in_file_paths, argv[i]);
+
     }
     printf("in_file_path = %s\n", in_file_path);
     printf("out_file_path = %s\n", out_file_path);

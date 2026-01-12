@@ -119,7 +119,7 @@ bool prepare() {
 }
 bool preprocess() {
   bool ret = true;
-  cmd_append(cmd,BUILD_UTIL_FOLDER METAM_EXECUTABLE, "./src/main.c","./src/vups.h", "-m","types", "-o", "./src/gen/types.h");
+  cmd_append(cmd,BUILD_UTIL_FOLDER METAM_EXECUTABLE,"./src/entity_component_system.h", "./src/main.c","./src/vups.h", "-m","types", "-o", "./src/gen/types.h");
   run(cmd);
 
   return ret;
@@ -167,7 +167,7 @@ bool test() {
 
 
   cmd_append(cmd, BUILD_UTIL_FOLDER METAM_EXECUTABLE, SRC_FOLDER TEST_FILE,"-f", "world_spawn", "-o", GEN_FOLDER GEN_FILE);
-  run(cmd);
+  CR(run(cmd));
   cmd_append(cmd, BUILD_FOLDER TEST_EXECUTABLE);
   run(cmd);
   return ret;

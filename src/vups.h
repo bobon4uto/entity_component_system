@@ -159,9 +159,14 @@ typedef const char* const_char_ptr;
 } NAME
 // to not shoot yourself in a foot use _capacity (else v->capacity will be
 // different lol)
+#ifndef VUPS_LOG
+#define VUPS_LOG(...)
+#endif // VUPS_LOG
 #define v_alloc(_v, _capacity)                                                 \
   do {                                                                         \
+    VUPS_LOG("%s:%d: FREE %p\n", __FILE__, __LINE__, (_v)->items);\
     (_v)->items = REALLOC((_v)->items, (_capacity) * sizeof(*(_v)->items));          \
+    VUPS_LOG("%s:%d: ALLOC %p\n", __FILE__, __LINE__, (_v)->items);\
     (_v)->capacity = _capacity;                                                  \
   } while (0)
 #define v_alloc_add(_v, _capacity)                                             \
@@ -204,6 +209,7 @@ typedef const char* const_char_ptr;
 #define v_free(_v)                                                    \
   do {                                                                         \
     if ((_v)->items != NULL && (_v)->capacity > 0) { \
+    VUPS_LOG("%s:%d: FREE %p\n", __FILE__, __LINE__, (_v)->items);\
     free((_v)->items); \
     (_v)->items = NULL; \
     (_v)->capacity = 0; \

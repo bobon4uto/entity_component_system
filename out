@@ -1,0 +1,579 @@
+src/main.c:16: FREE (nil)
+src/main.c:16: ALLOC 0x5606fd7ef320
+src/entity_component_system.h:83: FREE (nil)
+src/entity_component_system.h:83: ALLOC 0x5606fd7ef530
+src/entity_component_system.h:83: FREE 0x5606fd7ef530
+src/entity_component_system.h:83: ALLOC 0x5606fd7ef530
+src/entity_component_system.h:83: FREE 0x5606fd7ef530
+src/entity_component_system.h:83: ALLOC 0x5606fd7ef530
+src/entity_component_system.h:83: FREE (nil)
+src/entity_component_system.h:83: ALLOC 0x5606fd7ef550
+src/entity_component_system.h:83: FREE 0x5606fd7ef530
+src/entity_component_system.h:83: ALLOC 0x5606fd7ef530
+src/entity_component_system.h:83: FREE 0x5606fd7ef530
+src/entity_component_system.h:83: ALLOC 0x5606fd7ef530
+src/entity_component_system.h:83: FREE 0x5606fd7ef550
+src/entity_component_system.h:83: ALLOC 0x5606fd7ef550
+src/vups.h:380: FREE (nil)
+src/vups.h:380: ALLOC 0x5606fd7ef570
+src/vups.h:380: FREE 0x5606fd7ef570
+src/vups.h:380: ALLOC 0x5606fd7ef570
+src/vups.h:380: FREE 0x5606fd7ef570
+src/vups.h:380: ALLOC 0x5606fd7ef570
+src/vups.h:380: FREE 0x5606fd7ef570
+src/vups.h:380: ALLOC 0x5606fd7ef570
+src/entity_component_system.h:83: FREE 0x5606fd7ef530
+src/entity_component_system.h:83: ALLOC 0x5606fd7ef590
+src/entity_component_system.h:83: FREE 0x5606fd7ef590
+src/entity_component_system.h:83: ALLOC 0x5606fd7ef590
+src/entity_component_system.h:83: FREE 0x5606fd7ef550
+src/entity_component_system.h:83: ALLOC 0x5606fd7ef550
+src/main.c:72: FREE (nil)
+src/main.c:72: ALLOC 0x5606fd7ef530
+src/main.c:72: FREE (nil)
+src/main.c:72: ALLOC 0x5606fd7ef5e0
+created i32 = 0x5606fd7ef5e0
+src/main.c:72: FREE 0x5606fd7ef530
+src/main.c:72: ALLOC 0x5606fd7ef530
+src/main.c:72: FREE (nil)
+src/main.c:72: ALLOC 0x5606fd7ef600
+created char_ptr = 0x5606fd7ef600
+src/main.c:72: FREE 0x5606fd7ef530
+src/main.c:72: ALLOC 0x5606fd7ef530
+src/main.c:72: FREE (nil)
+src/main.c:72: ALLOC 0x5606fd7ef620
+created String_Holder = 0x5606fd7ef620
+src/main.c:81: FREE (nil)
+src/main.c:81: ALLOC 0x5606fd7ef640
+src/main.c:16: FREE 0x5606fd7ef320
+src/main.c:16: ALLOC 0x5606fd7ef660
+src/vups.h:380: FREE (nil)
+src/vups.h:380: ALLOC 0x5606fd7ef320
+src/vups.h:380: FREE 0x5606fd7ef320
+src/vups.h:380: ALLOC 0x5606fd7ef320
+src/vups.h:380: FREE 0x5606fd7ef320
+src/vups.h:380: ALLOC 0x5606fd7ef320
+src/vups.h:380: FREE 0x5606fd7ef320
+src/vups.h:380: ALLOC 0x5606fd7ef320
+src/main.c:72: FREE (nil)
+src/main.c:72: ALLOC 0x5606fd7ef340
+src/main.c:72: FREE (nil)
+src/main.c:72: ALLOC 0x5606fd7ef360
+created i32 = 0x5606fd7ef360
+src/main.c:72: FREE 0x5606fd7ef340
+src/main.c:72: ALLOC 0x5606fd7ef340
+src/main.c:72: FREE (nil)
+src/main.c:72: ALLOC 0x5606fd7ef380
+created char_ptr = 0x5606fd7ef380
+src/main.c:72: FREE 0x5606fd7ef340
+src/main.c:72: ALLOC 0x5606fd7ef340
+src/main.c:72: FREE (nil)
+src/main.c:72: ALLOC 0x5606fd7ef3a0
+created String_Holder = 0x5606fd7ef3a0
+src/main.c:41: FREE (nil)
+src/main.c:41: ALLOC 0x5606fd7ef3c0
+src/main.c:41: FREE (nil)
+src/main.c:41: ALLOC 0x5606fd7ef3e0
+src/main.c:41: FREE (nil)
+src/main.c:41: ALLOC 0x5606fd7ef400
+src/main.c:41: FREE (nil)
+src/main.c:41: ALLOC 0x5606fd7ef420
+src/main.c:41: FREE (nil)
+src/main.c:41: ALLOC 0x5606fd7ef440
+src/main.c:41: FREE 0x5606fd7ef5e0
+src/main.c:41: ALLOC 0x5606fd7ef5e0
+src/main.c:41: FREE 0x5606fd7ef360
+src/main.c:41: FREE (nil)
+src/main.c:41: ALLOC 0x5606fd7ef360
+src/main.c:41: FREE (nil)
+src/main.c:41: ALLOC 0x5606fd7ef460
+src/main.c:41: FREE (nil)
+src/main.c:41: ALLOC 0x5606fd7ef480
+src/main.c:41: FREE (nil)
+src/main.c:41: ALLOC 0x5606fd7ef4a0
+src/main.c:41: FREE (nil)
+src/main.c:41: ALLOC 0x5606fd7ef4c0
+src/main.c:41: FREE (nil)
+src/main.c:41: ALLOC 0x5606fd7ef4e0
+src/main.c:41: FREE (nil)
+src/main.c:41: ALLOC 0x5606fd7ef500
+src/main.c:41: FREE 0x5606fd7ef600
+src/main.c:41: ALLOC 0x5606fd7ef600
+src/main.c:41: FREE 0x5606fd7ef380
+src/main.c:41: FREE (nil)
+src/main.c:41: ALLOC 0x5606fd7ef380
+src/main.c:41: FREE (nil)
+src/main.c:41: ALLOC 0x5606fd7efa70
+src/main.c:41: FREE 0x5606fd7ef620
+src/main.c:41: ALLOC 0x5606fd7efa90
+src/main.c:41: FREE 0x5606fd7ef3a0
+src/main.c:41: FREE (nil)
+src/main.c:41: ALLOC 0x5606fd7ef3a0
+src/main.c:41: FREE (nil)
+src/main.c:41: ALLOC 0x5606fd7ef620
+src/main.c:41: FREE (nil)
+src/main.c:41: ALLOC 0x5606fd7efad0
+src/main.c:81: FREE 0x5606fd7ef640
+src/main.c:81: ALLOC 0x5606fd7efaf0
+src/main.c:72: FREE (nil)
+src/main.c:72: ALLOC 0x5606fd7ef640
+src/main.c:72: FREE (nil)
+src/main.c:72: ALLOC 0x5606fd7efb20
+created char_ptr = 0x5606fd7efb20
+src/main.c:72: FREE 0x5606fd7ef640
+src/main.c:72: ALLOC 0x5606fd7ef640
+src/main.c:72: FREE (nil)
+src/main.c:72: ALLOC 0x5606fd7efb40
+created i32 = 0x5606fd7efb40
+src/main.c:72: FREE 0x5606fd7ef640
+src/main.c:72: ALLOC 0x5606fd7ef640
+src/main.c:72: FREE (nil)
+src/main.c:72: ALLOC 0x5606fd7efb60
+created String_Holder = 0x5606fd7efb60
+src/main.c:81: FREE 0x5606fd7efaf0
+src/main.c:81: ALLOC 0x5606fd7efb80
+src/main.c:16: FREE 0x5606fd7ef660
+src/main.c:16: ALLOC 0x5606fd7efbd0
+src/main.c:72: FREE (nil)
+src/main.c:72: ALLOC 0x5606fd7efaf0
+src/main.c:72: FREE (nil)
+src/main.c:72: ALLOC 0x5606fd7ef660
+created char_ptr = 0x5606fd7ef660
+src/main.c:72: FREE 0x5606fd7efaf0
+src/main.c:72: ALLOC 0x5606fd7efaf0
+src/main.c:72: FREE (nil)
+src/main.c:72: ALLOC 0x5606fd7ef680
+created i32 = 0x5606fd7ef680
+src/main.c:72: FREE 0x5606fd7efaf0
+src/main.c:72: ALLOC 0x5606fd7efaf0
+src/main.c:72: FREE (nil)
+src/main.c:72: ALLOC 0x5606fd7ef6a0
+created String_Holder = 0x5606fd7ef6a0
+src/main.c:41: FREE (nil)
+src/main.c:41: ALLOC 0x5606fd7ef6c0
+src/main.c:41: FREE (nil)
+src/main.c:41: ALLOC 0x5606fd7ef6e0
+src/main.c:41: FREE (nil)
+src/main.c:41: ALLOC 0x5606fd7ef700
+src/main.c:41: FREE (nil)
+src/main.c:41: ALLOC 0x5606fd7ef720
+src/main.c:41: FREE (nil)
+src/main.c:41: ALLOC 0x5606fd7ef740
+src/main.c:41: FREE 0x5606fd7efb40
+src/main.c:41: ALLOC 0x5606fd7efb40
+src/main.c:41: FREE 0x5606fd7ef680
+src/main.c:41: FREE (nil)
+src/main.c:41: ALLOC 0x5606fd7ef680
+src/main.c:41: FREE (nil)
+src/main.c:41: ALLOC 0x5606fd7ef760
+src/main.c:41: FREE (nil)
+src/main.c:41: ALLOC 0x5606fd7ef780
+src/main.c:41: FREE (nil)
+src/main.c:41: ALLOC 0x5606fd7ef7a0
+src/main.c:41: FREE (nil)
+src/main.c:41: ALLOC 0x5606fd7ef7c0
+src/main.c:41: FREE (nil)
+src/main.c:41: ALLOC 0x5606fd7ef7e0
+src/main.c:41: FREE (nil)
+src/main.c:41: ALLOC 0x5606fd7ef800
+src/main.c:41: FREE 0x5606fd7efb20
+src/main.c:41: ALLOC 0x5606fd7efb20
+src/main.c:41: FREE 0x5606fd7ef660
+src/main.c:41: FREE (nil)
+src/main.c:41: ALLOC 0x5606fd7ef660
+src/main.c:41: FREE (nil)
+src/main.c:41: ALLOC 0x5606fd7ef820
+src/main.c:41: FREE 0x5606fd7efb60
+src/main.c:41: ALLOC 0x5606fd7ef840
+src/main.c:41: FREE 0x5606fd7ef6a0
+src/main.c:41: FREE (nil)
+src/main.c:41: ALLOC 0x5606fd7ef6a0
+src/main.c:41: FREE (nil)
+src/main.c:41: ALLOC 0x5606fd7efb60
+src/main.c:41: FREE (nil)
+src/main.c:41: ALLOC 0x5606fd7ef880
+src/main.c:72: FREE (nil)
+src/main.c:72: ALLOC 0x5606fd7ef8a0
+src/main.c:72: FREE (nil)
+src/main.c:72: ALLOC 0x5606fd7ef8c0
+created char_ptr = 0x5606fd7ef8c0
+src/main.c:72: FREE 0x5606fd7ef8a0
+src/main.c:72: ALLOC 0x5606fd7ef8a0
+src/main.c:72: FREE (nil)
+src/main.c:72: ALLOC 0x5606fd7ef8e0
+created i32 = 0x5606fd7ef8e0
+src/main.c:72: FREE 0x5606fd7ef8a0
+src/main.c:72: ALLOC 0x5606fd7ef8a0
+src/main.c:72: FREE (nil)
+src/main.c:72: ALLOC 0x5606fd7ef900
+created String_Holder = 0x5606fd7ef900
+src/main.c:41: FREE 0x5606fd7efb40
+src/main.c:41: ALLOC 0x5606fd7efb40
+src/main.c:41: FREE 0x5606fd7ef8e0
+src/main.c:41: FREE 0x5606fd7efb20
+src/main.c:41: ALLOC 0x5606fd7ef920
+src/main.c:41: FREE 0x5606fd7ef8c0
+src/main.c:41: FREE 0x5606fd7ef840
+src/main.c:41: ALLOC 0x5606fd7ef950
+src/main.c:41: FREE 0x5606fd7ef900
+src/main.c:81: FREE 0x5606fd7efb80
+src/main.c:81: ALLOC 0x5606fd7ef9c0
+src/main.c:72: FREE (nil)
+src/main.c:72: ALLOC 0x5606fd7ef900
+src/main.c:72: FREE (nil)
+src/main.c:72: ALLOC 0x5606fd7ef8c0
+created i32 = 0x5606fd7ef8c0
+src/main.c:72: FREE 0x5606fd7ef900
+src/main.c:72: ALLOC 0x5606fd7ef900
+src/main.c:72: FREE (nil)
+src/main.c:72: ALLOC 0x5606fd7ef8e0
+created String_Holder = 0x5606fd7ef8e0
+src/main.c:72: FREE (nil)
+src/main.c:72: ALLOC 0x5606fd7efb20
+src/main.c:72: FREE (nil)
+src/main.c:72: ALLOC 0x5606fd7efa50
+created i32 = 0x5606fd7efa50
+src/main.c:72: FREE 0x5606fd7efb20
+src/main.c:72: ALLOC 0x5606fd7efb20
+src/main.c:72: FREE (nil)
+src/main.c:72: ALLOC 0x5606fd7f03e0
+created String_Holder = 0x5606fd7f03e0
+src/main.c:41: FREE (nil)
+src/main.c:41: ALLOC 0x5606fd7f0400
+src/main.c:41: FREE (nil)
+src/main.c:41: ALLOC 0x5606fd7f0420
+src/main.c:41: FREE (nil)
+src/main.c:41: ALLOC 0x5606fd7f0440
+src/main.c:41: FREE (nil)
+src/main.c:41: ALLOC 0x5606fd7f0460
+src/main.c:41: FREE (nil)
+src/main.c:41: ALLOC 0x5606fd7f0480
+src/main.c:41: FREE 0x5606fd7ef8c0
+src/main.c:41: ALLOC 0x5606fd7ef8c0
+src/main.c:41: FREE 0x5606fd7efa50
+src/main.c:41: FREE (nil)
+src/main.c:41: ALLOC 0x5606fd7efa50
+src/main.c:41: FREE (nil)
+src/main.c:41: ALLOC 0x5606fd7f04a0
+src/main.c:41: FREE (nil)
+src/main.c:41: ALLOC 0x5606fd7f04c0
+src/main.c:41: FREE (nil)
+src/main.c:41: ALLOC 0x5606fd7f04e0
+src/main.c:41: FREE (nil)
+src/main.c:41: ALLOC 0x5606fd7f0500
+src/main.c:41: FREE (nil)
+src/main.c:41: ALLOC 0x5606fd7f0520
+src/main.c:41: FREE (nil)
+src/main.c:41: ALLOC 0x5606fd7f0540
+src/main.c:41: FREE (nil)
+src/main.c:41: ALLOC 0x5606fd7f0560
+src/main.c:41: FREE (nil)
+src/main.c:41: ALLOC 0x5606fd7f0580
+src/main.c:41: FREE (nil)
+src/main.c:41: ALLOC 0x5606fd7f05a0
+src/main.c:41: FREE 0x5606fd7ef8e0
+src/main.c:41: ALLOC 0x5606fd7ef840
+src/main.c:41: FREE 0x5606fd7f03e0
+src/main.c:41: FREE (nil)
+src/main.c:41: ALLOC 0x5606fd7f03e0
+src/main.c:41: FREE (nil)
+src/main.c:41: ALLOC 0x5606fd7ef8e0
+src/main.c:41: FREE (nil)
+src/main.c:41: ALLOC 0x5606fd7f05c0
+src/main.c:72: FREE (nil)
+src/main.c:72: ALLOC 0x5606fd7f05e0
+src/main.c:72: FREE (nil)
+src/main.c:72: ALLOC 0x5606fd7f0600
+created char_ptr = 0x5606fd7f0600
+src/main.c:72: FREE 0x5606fd7f05e0
+src/main.c:72: ALLOC 0x5606fd7f05e0
+src/main.c:72: FREE (nil)
+src/main.c:72: ALLOC 0x5606fd7f0620
+created u16 = 0x5606fd7f0620
+src/main.c:72: FREE 0x5606fd7f05e0
+src/main.c:72: ALLOC 0x5606fd7f05e0
+src/main.c:72: FREE (nil)
+src/main.c:72: ALLOC 0x5606fd7f0640
+created String_Holder = 0x5606fd7f0640
+src/main.c:16: FREE 0x5606fd7efbd0
+src/main.c:16: ALLOC 0x5606fd7f0660
+src/main.c:72: FREE (nil)
+src/main.c:72: ALLOC 0x5606fd7efb80
+src/main.c:72: FREE (nil)
+src/main.c:72: ALLOC 0x5606fd7efba0
+created char_ptr = 0x5606fd7efba0
+src/main.c:72: FREE 0x5606fd7efb80
+src/main.c:72: ALLOC 0x5606fd7efb80
+src/main.c:72: FREE (nil)
+src/main.c:72: ALLOC 0x5606fd7efbc0
+created i32 = 0x5606fd7efbc0
+src/main.c:72: FREE 0x5606fd7efb80
+src/main.c:72: ALLOC 0x5606fd7efb80
+src/main.c:72: FREE (nil)
+src/main.c:72: ALLOC 0x5606fd7efbe0
+created String_Holder = 0x5606fd7efbe0
+src/main.c:41: FREE 0x5606fd7efbc0
+src/main.c:41: FREE 0x5606fd7efba0
+src/main.c:41: FREE 0x5606fd7efbe0
+src/main.c:81: FREE 0x5606fd7ef9c0
+src/main.c:81: ALLOC 0x5606fd7efc00
+types.count = (size_t) {3}
+systen runningsrc/vups.h:362: FREE 0x5606fd7ef570
+src/vups.h:362: ALLOC 0x5606fd7ef570
+src/vups.h:362: FREE 0x5606fd7ef320
+src/vups.h:362: ALLOC 0x5606fd7ef320
+systen runningsrc/vups.h:362: FREE (nil)
+src/vups.h:362: ALLOC 0x5606fd7efbe0
+src/vups.h:362: FREE (nil)
+src/vups.h:362: ALLOC 0x5606fd7efba0
+src/vups.h:362: FREE (nil)
+src/vups.h:362: ALLOC 0x5606fd7efbc0
+src/vups.h:362: FREE (nil)
+src/vups.h:362: ALLOC 0x5606fd7efd10
+systen runningsrc/vups.h:362: FREE (nil)
+src/vups.h:362: ALLOC 0x5606fd7efd30
+src/vups.h:362: FREE (nil)
+src/vups.h:362: ALLOC 0x5606fd7efd50
+systen runningnumi= 6
+[freeing] sh = hello5
+[freeing] sh = world6
+[freeing] sh = 7
+[freeing] sh = 8
+[freeing] sh = 9
+[freeing] sh = 15
+[freeing] sh = 11
+[freeing] sh = 12
+src/vups.h:415: FREE (nil)
+src/vups.h:415: ALLOC 0x5606fd7efd30
+[freeing] sh = 
+freeing Position = 0x5606fd7ef3c0
+src/main.c:163: FREE 0x5606fd7ef3c0
+freeing Entity = 0x5606fd7ef3e0
+src/main.c:163: FREE 0x5606fd7ef3e0
+freeing Byte_Ptr = 0x5606fd7ef400
+src/main.c:163: FREE 0x5606fd7ef400
+freeing i8 = 0x5606fd7ef420
+src/main.c:163: FREE 0x5606fd7ef420
+freeing i16 = 0x5606fd7ef440
+src/main.c:163: FREE 0x5606fd7ef440
+freeing i32 = 0x5606fd7ef5e0
+src/main.c:163: FREE 0x5606fd7ef5e0
+freeing i64 = 0x5606fd7ef360
+src/main.c:163: FREE 0x5606fd7ef360
+freeing u8 = 0x5606fd7ef460
+src/main.c:163: FREE 0x5606fd7ef460
+freeing u16 = 0x5606fd7ef480
+src/main.c:163: FREE 0x5606fd7ef480
+freeing u32 = 0x5606fd7ef4a0
+src/main.c:163: FREE 0x5606fd7ef4a0
+freeing u64 = 0x5606fd7ef4c0
+src/main.c:163: FREE 0x5606fd7ef4c0
+freeing f32 = 0x5606fd7ef4e0
+src/main.c:163: FREE 0x5606fd7ef4e0
+freeing f64 = 0x5606fd7ef500
+src/main.c:163: FREE 0x5606fd7ef500
+freeing char_ptr = 0x5606fd7ef600
+src/main.c:163: FREE 0x5606fd7ef600
+freeing const_char_ptr = 0x5606fd7ef380
+src/main.c:163: FREE 0x5606fd7ef380
+freeing Arena = 0x5606fd7efa70
+src/main.c:163: FREE 0x5606fd7efa70
+freeing String_Holder = 0x5606fd7efa90
+src/main.c:163: FREE 0x5606fd7efa90
+freeing String_Holder_Ptr = 0x5606fd7ef3a0
+src/main.c:163: FREE 0x5606fd7ef3a0
+freeing String_Variable_Slice = 0x5606fd7ef620
+src/main.c:163: FREE 0x5606fd7ef620
+freeing String_Variable_Slice_Ptr = 0x5606fd7efad0
+src/main.c:163: FREE 0x5606fd7efad0
+src/main.c:164: FREE 0x5606fd7ef530
+freeing Position = 0x5606fd7ef6c0
+src/main.c:163: FREE 0x5606fd7ef6c0
+freeing Entity = 0x5606fd7ef6e0
+src/main.c:163: FREE 0x5606fd7ef6e0
+freeing Byte_Ptr = 0x5606fd7ef700
+src/main.c:163: FREE 0x5606fd7ef700
+freeing i8 = 0x5606fd7ef720
+src/main.c:163: FREE 0x5606fd7ef720
+freeing i16 = 0x5606fd7ef740
+src/main.c:163: FREE 0x5606fd7ef740
+freeing i32 = 0x5606fd7efb40
+src/main.c:163: FREE 0x5606fd7efb40
+freeing i64 = 0x5606fd7ef680
+src/main.c:163: FREE 0x5606fd7ef680
+freeing u8 = 0x5606fd7ef760
+src/main.c:163: FREE 0x5606fd7ef760
+freeing u16 = 0x5606fd7ef780
+src/main.c:163: FREE 0x5606fd7ef780
+freeing u32 = 0x5606fd7ef7a0
+src/main.c:163: FREE 0x5606fd7ef7a0
+freeing u64 = 0x5606fd7ef7c0
+src/main.c:163: FREE 0x5606fd7ef7c0
+freeing f32 = 0x5606fd7ef7e0
+src/main.c:163: FREE 0x5606fd7ef7e0
+freeing f64 = 0x5606fd7ef800
+src/main.c:163: FREE 0x5606fd7ef800
+freeing char_ptr = 0x5606fd7ef920
+src/main.c:163: FREE 0x5606fd7ef920
+freeing const_char_ptr = 0x5606fd7ef660
+src/main.c:163: FREE 0x5606fd7ef660
+freeing Arena = 0x5606fd7ef820
+src/main.c:163: FREE 0x5606fd7ef820
+freeing String_Holder = 0x5606fd7ef950
+src/main.c:163: FREE 0x5606fd7ef950
+freeing String_Holder_Ptr = 0x5606fd7ef6a0
+src/main.c:163: FREE 0x5606fd7ef6a0
+freeing String_Variable_Slice = 0x5606fd7efb60
+src/main.c:163: FREE 0x5606fd7efb60
+freeing String_Variable_Slice_Ptr = 0x5606fd7ef880
+src/main.c:163: FREE 0x5606fd7ef880
+src/main.c:164: FREE 0x5606fd7ef640
+freeing Position = 0x5606fd7f0400
+src/main.c:163: FREE 0x5606fd7f0400
+freeing Entity = 0x5606fd7f0420
+src/main.c:163: FREE 0x5606fd7f0420
+freeing Byte_Ptr = 0x5606fd7f0440
+src/main.c:163: FREE 0x5606fd7f0440
+freeing i8 = 0x5606fd7f0460
+src/main.c:163: FREE 0x5606fd7f0460
+freeing i16 = 0x5606fd7f0480
+src/main.c:163: FREE 0x5606fd7f0480
+freeing i32 = 0x5606fd7ef8c0
+src/main.c:163: FREE 0x5606fd7ef8c0
+freeing i64 = 0x5606fd7efa50
+src/main.c:163: FREE 0x5606fd7efa50
+freeing u8 = 0x5606fd7f04a0
+src/main.c:163: FREE 0x5606fd7f04a0
+freeing u16 = 0x5606fd7f04c0
+src/main.c:163: FREE 0x5606fd7f04c0
+freeing u32 = 0x5606fd7f04e0
+src/main.c:163: FREE 0x5606fd7f04e0
+freeing u64 = 0x5606fd7f0500
+src/main.c:163: FREE 0x5606fd7f0500
+freeing f32 = 0x5606fd7f0520
+src/main.c:163: FREE 0x5606fd7f0520
+freeing f64 = 0x5606fd7f0540
+src/main.c:163: FREE 0x5606fd7f0540
+freeing char_ptr = 0x5606fd7f0560
+src/main.c:163: FREE 0x5606fd7f0560
+freeing const_char_ptr = 0x5606fd7f0580
+src/main.c:163: FREE 0x5606fd7f0580
+freeing Arena = 0x5606fd7f05a0
+src/main.c:163: FREE 0x5606fd7f05a0
+freeing String_Holder = 0x5606fd7ef840
+src/main.c:163: FREE 0x5606fd7ef840
+freeing String_Holder_Ptr = 0x5606fd7f03e0
+src/main.c:163: FREE 0x5606fd7f03e0
+freeing String_Variable_Slice = 0x5606fd7ef8e0
+src/main.c:163: FREE 0x5606fd7ef8e0
+freeing String_Variable_Slice_Ptr = 0x5606fd7f05c0
+src/main.c:163: FREE 0x5606fd7f05c0
+src/main.c:164: FREE 0x5606fd7ef900
+freeing Position = (nil)
+freeing Entity = (nil)
+freeing Byte_Ptr = (nil)
+freeing i8 = (nil)
+freeing i16 = (nil)
+freeing i32 = (nil)
+freeing i64 = (nil)
+freeing u8 = (nil)
+freeing u16 = 0x5606fd7f0620
+src/main.c:163: FREE 0x5606fd7f0620
+freeing u32 = (nil)
+freeing u64 = (nil)
+freeing f32 = (nil)
+freeing f64 = (nil)
+freeing char_ptr = 0x5606fd7f0600
+src/main.c:163: FREE 0x5606fd7f0600
+freeing const_char_ptr = (nil)
+freeing Arena = (nil)
+freeing String_Holder = 0x5606fd7f0640
+src/main.c:163: FREE 0x5606fd7f0640
+freeing String_Holder_Ptr = (nil)
+freeing String_Variable_Slice = (nil)
+freeing String_Variable_Slice_Ptr = (nil)
+src/main.c:164: FREE 0x5606fd7f05e0
+src/main.c:170: FREE 0x5606fd7ef590
+src/main.c:171: FREE 0x5606fd7ef550
+src/main.c:172: FREE 0x5606fd7efc00
+freeing Position = (nil)
+freeing Entity = (nil)
+freeing Byte_Ptr = (nil)
+freeing i8 = (nil)
+freeing i16 = (nil)
+freeing i32 = (nil)
+freeing i64 = (nil)
+freeing u8 = (nil)
+freeing u16 = (nil)
+freeing u32 = (nil)
+freeing u64 = (nil)
+freeing f32 = (nil)
+freeing f64 = (nil)
+freeing char_ptr = (nil)
+freeing const_char_ptr = (nil)
+freeing Arena = (nil)
+freeing String_Holder = (nil)
+freeing String_Holder_Ptr = (nil)
+freeing String_Variable_Slice = (nil)
+freeing String_Variable_Slice_Ptr = (nil)
+freeing Position = (nil)
+freeing Entity = (nil)
+freeing Byte_Ptr = (nil)
+freeing i8 = (nil)
+freeing i16 = (nil)
+freeing i32 = (nil)
+freeing i64 = (nil)
+freeing u8 = (nil)
+freeing u16 = (nil)
+freeing u32 = (nil)
+freeing u64 = (nil)
+freeing f32 = (nil)
+freeing f64 = (nil)
+freeing char_ptr = (nil)
+freeing const_char_ptr = (nil)
+freeing Arena = (nil)
+freeing String_Holder = (nil)
+freeing String_Holder_Ptr = (nil)
+freeing String_Variable_Slice = (nil)
+freeing String_Variable_Slice_Ptr = (nil)
+freeing Position = (nil)
+freeing Entity = (nil)
+freeing Byte_Ptr = (nil)
+freeing i8 = (nil)
+freeing i16 = (nil)
+freeing i32 = (nil)
+freeing i64 = (nil)
+freeing u8 = (nil)
+freeing u16 = (nil)
+freeing u32 = (nil)
+freeing u64 = (nil)
+freeing f32 = (nil)
+freeing f64 = (nil)
+freeing char_ptr = (nil)
+freeing const_char_ptr = (nil)
+freeing Arena = (nil)
+freeing String_Holder = (nil)
+freeing String_Holder_Ptr = (nil)
+freeing String_Variable_Slice = (nil)
+freeing String_Variable_Slice_Ptr = (nil)
+freeing Position = (nil)
+freeing Entity = (nil)
+freeing Byte_Ptr = (nil)
+freeing i8 = (nil)
+freeing i16 = (nil)
+freeing i32 = (nil)
+freeing i64 = (nil)
+freeing u8 = (nil)
+freeing u16 = (nil)
+freeing u32 = (nil)
+freeing u64 = (nil)
+freeing f32 = (nil)
+freeing f64 = (nil)
+freeing char_ptr = (nil)
+freeing const_char_ptr = (nil)
+freeing Arena = (nil)
+freeing String_Holder = (nil)
+freeing String_Holder_Ptr = (nil)
+freeing String_Variable_Slice = (nil)
+freeing String_Variable_Slice_Ptr = (nil)
+src/main.c:177: FREE 0x5606fd7f0660
