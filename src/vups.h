@@ -5,46 +5,44 @@
 
 // #include <future>
 //		#include <coroutine>
+#include <assert.h>
 #include <stdarg.h>
 #include <stdbool.h>
+#include <stdint.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include <stdint.h>
 #include <string.h>
 #include <unistd.h>
-#include <stdarg.h>
-#include <assert.h>
-
 
 #ifndef VUPS_TYPES
-typedef int8_t   i8;
-typedef int16_t  i16;
-typedef int32_t  i32;
-typedef int64_t  i64;
-typedef uint8_t  u8;
+typedef int8_t i8;
+typedef int16_t i16;
+typedef int32_t i32;
+typedef int64_t i64;
+typedef uint8_t u8;
 typedef uint16_t u16;
 typedef uint32_t u32;
 typedef uint64_t u64;
-typedef float    f32;
-typedef double   f64;
-/*#*/typedef size_t   u;
-typedef char* char_ptr;
-typedef const char* const_char_ptr;
+typedef float f32;
+typedef double f64;
+/*#*/ typedef size_t u;
+typedef char *char_ptr;
+typedef const char *const_char_ptr;
 #define VUPS_TYPES(T, X)                                                       \
-  T(size_t, "%zu", X) \
-  T(u8, "%u",X) \
-  T(u16, "%u",X) \
-  T(u32, "%u",X) \
-  T(i8, "%d",X) \
-  T(i16, "%d",X) \
-  T(i32, "%d",X) \
-  T(i64, "%d",X) \
-  T(f32, "%f",X) \
-  T(f64, "%lf",X) \
-  T(char_ptr, "%s",X)             \
-      T(char, "%c",X) T(const_char_ptr, "%s",X)                                    \
-      T(bool, X ? "true(%0b)" : "false(%0b)",X)\
-  T(Bytes, "",X) \
+  T(size_t, "%zu", X)                                                          \
+  T(u8, "%u", X)                                                               \
+  T(u16, "%u", X)                                                              \
+  T(u32, "%u", X)                                                              \
+  T(i8, "%d", X)                                                               \
+  T(i16, "%d", X)                                                              \
+  T(i32, "%d", X)                                                              \
+  T(i64, "%d", X)                                                              \
+  T(f32, "%f", X)                                                              \
+  T(f64, "%lf", X)                                                             \
+  T(char_ptr, "%s", X)                                                         \
+  T(char, "%c", X)                                                             \
+  T(const_char_ptr, "%s", X)                                                   \
+  T(bool, X ? "true(%0b)" : "false(%0b)", X) T(Bytes, "", X)
 
 #endif
 
@@ -86,10 +84,10 @@ typedef const char* const_char_ptr;
 #endif
 // define new types to use PRINT
 // TTT
-#define _VUPS_TT(TYPE, FORMAT, _X)                                                 \
+#define _VUPS_TT(TYPE, FORMAT, _X)                                             \
   TYPE:                                                                        \
   #TYPE,
-#define _VUPS_TF(TYPE, FORMAT, _X)                                                 \
+#define _VUPS_TF(TYPE, FORMAT, _X)                                             \
   TYPE:                                                                        \
   FORMAT,
 // condition ? value_if_true : value_if_false;
@@ -152,11 +150,12 @@ typedef const char* const_char_ptr;
 #define RET ret
 #endif
 
-#define DA_TYPE(ELEM_TYPE,NAME) typedef struct NAME { \
-  size_t capacity; \
-  size_t count; \
-  ELEM_TYPE *items; \
-} NAME
+#define DA_TYPE(ELEM_TYPE, NAME)                                               \
+  typedef struct NAME {                                                        \
+    size_t capacity;                                                           \
+    size_t count;                                                              \
+    ELEM_TYPE *items;                                                          \
+  } NAME
 // to not shoot yourself in a foot use _capacity (else v->capacity will be
 // different lol)
 #ifndef VUPS_LOG
@@ -164,57 +163,56 @@ typedef const char* const_char_ptr;
 #endif // VUPS_LOG
 #define v_alloc(_v, _capacity)                                                 \
   do {                                                                         \
-    VUPS_LOG("%s:%d: FREE %p\n", __FILE__, __LINE__, (_v)->items);\
-    (_v)->items = REALLOC((_v)->items, (_capacity) * sizeof(*(_v)->items));          \
-    VUPS_LOG("%s:%d: ALLOC %p\n", __FILE__, __LINE__, (_v)->items);\
-    (_v)->capacity = _capacity;                                                  \
+    VUPS_LOG("%s:%d: FREE %p\n", __FILE__, __LINE__, (_v)->items);             \
+    (_v)->items = REALLOC((_v)->items, (_capacity) * sizeof(*(_v)->items));    \
+    VUPS_LOG("%s:%d: ALLOC %p\n", __FILE__, __LINE__, (_v)->items);            \
+    (_v)->capacity = _capacity;                                                \
   } while (0)
 #define v_alloc_add(_v, _capacity)                                             \
   do {                                                                         \
-    v_alloc((_v), (_v)->capacity + _capacity);                                     \
+    v_alloc((_v), (_v)->capacity + _capacity);                                 \
   } while (0)
 #define v_prealloc(_v, _capacity)                                              \
   do {                                                                         \
-    v_alloc((_v), _capacity);                                                    \
-    (_v)->count = 0;                                                             \
+    v_alloc((_v), _capacity);                                                  \
+    (_v)->count = 0;                                                           \
   } while (0)
 #define v_double(_v)                                                           \
   do {                                                                         \
-    v_alloc((_v), (_v)->capacity * 2);                                             \
+    v_alloc((_v), (_v)->capacity * 2);                                         \
   } while (0)
 
 #define v_append_buf(_v, buf, _lenght)                                         \
   do {                                                                         \
-    if ((_v)->capacity == 0) {                                                   \
-      v_prealloc((_v), V_INITIAL_CAPACITY);                                      \
+    if ((_v)->capacity == 0) {                                                 \
+      v_prealloc((_v), V_INITIAL_CAPACITY);                                    \
     }                                                                          \
-    while (((_v)->capacity - (_v)->count) < _lenght) {                             \
-      v_double((_v));                                                            \
+    while (((_v)->capacity - (_v)->count) < _lenght) {                         \
+      v_double((_v));                                                          \
     }                                                                          \
-    memcpy((_v)->items + (_v)->count, buf, _lenght * sizeof(*(_v)->items));          \
-    (_v)->count += _lenght;                                                      \
+    memcpy((_v)->items + (_v)->count, buf, _lenght * sizeof(*(_v)->items));    \
+    (_v)->count += _lenght;                                                    \
   } while (0)
 #define v_append(_v, _item)                                                    \
   do {                                                                         \
-    if ((_v)->capacity == 0) {                                                   \
-      v_prealloc((_v), V_INITIAL_CAPACITY);                                      \
+    if ((_v)->capacity == 0) {                                                 \
+      v_prealloc((_v), V_INITIAL_CAPACITY);                                    \
     }                                                                          \
-    while ((_v)->count >= (_v)->capacity) {                                        \
-      v_double((_v));                                                            \
+    while ((_v)->count >= (_v)->capacity) {                                    \
+      v_double((_v));                                                          \
     }                                                                          \
-    (_v)->items[(_v)->count++] = _item;                                            \
+    (_v)->items[(_v)->count++] = _item;                                        \
   } while (0)
 
-
-#define v_free(_v)                                                    \
+#define v_free(_v)                                                             \
   do {                                                                         \
-    if ((_v)->items != NULL && (_v)->capacity > 0) { \
-    VUPS_LOG("%s:%d: FREE %p\n", __FILE__, __LINE__, (_v)->items);\
-    free((_v)->items); \
-    (_v)->items = NULL; \
-    (_v)->capacity = 0; \
-    (_v)->count = 0; \
-    } \
+    if ((_v)->items != NULL && (_v)->capacity > 0) {                           \
+      VUPS_LOG("%s:%d: FREE %p\n", __FILE__, __LINE__, (_v)->items);           \
+      free((_v)->items);                                                       \
+      (_v)->items = NULL;                                                      \
+      (_v)->capacity = 0;                                                      \
+      (_v)->count = 0;                                                         \
+    }                                                                          \
   } while (0)
 //==============================================================================
 //															 ^^^MACROS^^^
@@ -268,6 +266,8 @@ bool sh_is_null_terminated(String_Holder_Ptr sh);
 void sh_append_null(String_Holder_Ptr sh);
 void sh_strip_null(String_Holder_Ptr sh);
 char *sh_c_str(String_Holder_Ptr sh); // sh_append_null(sh); return sh.items;
+String_Holder sh_from_c_str(const char *c_str);
+String_Holder sh_(const char *c_str);
 void sh_copy(String_Holder_Ptr sh_dst, String_Holder_Ptr sh_src);
 String_Holder sh_clone(String_Holder_Ptr sh_dst, String_Holder_Ptr sh_src);
 
@@ -332,7 +332,10 @@ u8 *_a_var_opt(Arena *a, size_t size, bool zero_init, bool do_double) {
 }
 u8 *a_var(Arena *a, size_t size) { return _a_var_opt(a, size, true, false); }
 
-u8 *a_clear(Arena *a) { a->count = 0; return a->items;}
+u8 *a_clear(Arena *a) {
+  a->count = 0;
+  return a->items;
+}
 
 //==============================================================================
 //															 ^^^ARENA^^^
@@ -343,7 +346,6 @@ u8 *a_clear(Arena *a) { a->count = 0; return a->items;}
 //==============================================================================
 
 #define V_INITIAL_CAPACITY 1
-
 
 void sh_prealloc(String_Holder_Ptr sh, size_t capacity) {
   v_prealloc(sh, capacity);
@@ -408,7 +410,8 @@ void sh_append_c_str(String_Holder_Ptr sh, const char *c_str) {
   }
 }
 bool sh_is_null_terminated(String_Holder_Ptr sh) {
-  if (!sh->items) return false;
+  if (!sh->items)
+    return false;
   return (sh->capacity > 0 && sh->items[sh->count - 1] == '\0');
 }
 void sh_append_null(
@@ -427,6 +430,13 @@ char *sh_c_str(String_Holder_Ptr sh) {
   sh_append_null(sh);
   return sh->items;
 }
+String_Holder sh_from_c_str(const char *c_str) {
+  String_Holder sh0 = {0};
+  String_Holder *sh = &sh0;
+  sh_append_c_str(sh, c_str);
+  return sh0;
+}
+String_Holder sh_(const char *c_str) { return sh_from_c_str(c_str); }
 void sh_copy(String_Holder_Ptr sh_dst, String_Holder_Ptr sh_src);
 String_Holder sh_clone(String_Holder_Ptr sh_dst, String_Holder_Ptr sh_src);
 void sh_free(String_Holder_Ptr sh) {
@@ -469,27 +479,26 @@ bool read_file(String_Holder_Ptr sh, const char *filepath) {
 
   return true;
 }
-bool write_file(String_Holder_Ptr sh, const char *path)
-{
-    bool result = true;
+bool write_file(String_Holder_Ptr sh, const char *path) {
+  bool result = true;
 
-    const char *buf = NULL;
-    FILE *f = fopen(path, "wb");
-    if (f == NULL) {
-      assert("DIDN'T OPEN FILE");
+  const char *buf = NULL;
+  FILE *f = fopen(path, "wb");
+  if (f == NULL) {
+    assert("DIDN'T OPEN FILE");
+  }
+  buf = (const char *)sh->items;
+  u size = sh->count;
+  while (size > 0) {
+    size_t n = fwrite(buf, 1, size, f);
+    if (ferror(f)) {
+      assert("DIDN'T WRITE TO FILE");
     }
-    buf = (const char*)sh->items;
-    u size = sh->count;
-    while (size > 0) {
-        size_t n = fwrite(buf, 1, size, f);
-        if (ferror(f)) {
-          assert("DIDN'T WRITE TO FILE");
-        }
-        size -= n;
-        buf  += n;
-    }
+    size -= n;
+    buf += n;
+  }
 
-    return result;
+  return result;
 }
 //==============================================================================
 //					  ^^^IO^^^

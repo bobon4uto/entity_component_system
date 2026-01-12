@@ -1,19 +1,18 @@
 
 
 #define VUPS_TYPES(T, X)                                                       \
-  T(size_t, "%zu", X) \
-  T(u8, "%u",X) T(u16, "%u",X) T(u32, "%u",X) \
-  T(i8, "%d",X) T(i16, "%d",X) T(i32, "%d",X) T(i64, "%d",X) \
-  T(f32, "%f",X) T(f64, "%lf",X) \
-  T(char_ptr, "%s",X)             \
-      T(char, "%c",X) T(const_char_ptr, "%s",X)                                    \
-      T(bool, X ? "true(%0b)" : "false(%0b)",X)
+  T(size_t, "%zu", X)                                                          \
+  T(u8, "%u", X)                                                               \
+  T(u16, "%u", X)                                                              \
+  T(u32, "%u", X) T(i8, "%d", X) T(i16, "%d", X) T(i32, "%d", X)               \
+      T(i64, "%d", X) T(f32, "%f", X) T(f64, "%lf", X) T(char_ptr, "%s", X)    \
+          T(char, "%c", X) T(const_char_ptr, "%s", X)                          \
+              T(bool, X ? "true(%0b)" : "false(%0b)", X)
 
-
-#define _VUPS_TT(TYPE, FORMAT, _X)                                                 \
+#define _VUPS_TT(TYPE, FORMAT, _X)                                             \
   TYPE:                                                                        \
   #TYPE,
-#define _VUPS_TF(TYPE, FORMAT, _X)                                                 \
+#define _VUPS_TF(TYPE, FORMAT, _X)                                             \
   TYPE:                                                                        \
   FORMAT,
 // condition ? value_if_true : value_if_false;
@@ -42,7 +41,6 @@
     PRINT(X);                                                                  \
     printf("}\n");                                                             \
   } while (0)
-
 
 #define HELLO "hi"
 int main() {

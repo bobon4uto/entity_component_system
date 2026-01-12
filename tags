@@ -72,6 +72,7 @@ CRL	src/vups.h	/^#define CRL(/;"	d
 DA_TYPE	src/vups.h	/^#define DA_TYPE(/;"	d
 DECLTYPE	src/ecs.pp.c	/^#define DECLTYPE(/;"	d	file:
 DECLTYPE	src/vups.h	/^#define DECLTYPE(/;"	d
+ENTITY_COMPONENT_SYSTEM_IMPLEMENTATION	src/main.c	/^#define ENTITY_COMPONENT_SYSTEM_IMPLEMENTATION$/;"	d	file:
 Entity	src/entity_component_system.h	/^typedef struct Entity {$/;"	s
 Entity	src/entity_component_system.h	/^} Entity;$/;"	t	typeref:struct:Entity
 FORMAT	src/ecs.pp.c	/^#define FORMAT(/;"	d	file:
@@ -134,9 +135,9 @@ World	src/entity_component_system.h	/^} World;$/;"	t	typeref:struct:World
 _ENTITY_COMPONENT_SYSTEM_H	src/entity_component_system.h	/^#define _ENTITY_COMPONENT_SYSTEM_H$/;"	d
 _Entity_Creation_Data	src/entity_component_system.h	/^\/*#*\/typedef struct _Entity_Creation_Data  {$/;"	s
 _Entity_Creation_Data	src/entity_component_system.h	/^} _Entity_Creation_Data;$/;"	t	typeref:struct:_Entity_Creation_Data
-_MK_ARCHETYPE_FREE_CALL_	src/main.c	/^#define _MK_ARCHETYPE_FREE_CALL_(/;"	d	file:
-_MK_ARCHETYPE_TRANSFER_	src/main.c	/^#define _MK_ARCHETYPE_TRANSFER_(/;"	d	file:
-_MK_COMPONENT_CASE_	src/main.c	/^#define _MK_COMPONENT_CASE_(/;"	d	file:
+_MK_ARCHETYPE_FREE_CALL_	src/entity_component_system.h	/^#define _MK_ARCHETYPE_FREE_CALL_(/;"	d
+_MK_ARCHETYPE_TRANSFER_	src/entity_component_system.h	/^#define _MK_ARCHETYPE_TRANSFER_(/;"	d
+_MK_COMPONENT_CASE_	src/entity_component_system.h	/^#define _MK_COMPONENT_CASE_(/;"	d
 _MK_COMPONENT_TYPE_ARRAY_AS_STRUCT_PART	src/entity_component_system.h	/^#define _MK_COMPONENT_TYPE_ARRAY_AS_STRUCT_PART(/;"	d
 _MK_COMPONENT_TYPE_ARRAY_TYPE	src/entity_component_system.h	/^#define _MK_COMPONENT_TYPE_ARRAY_TYPE(/;"	d
 _MK_COMPONENT_TYPE_FUNCTION	src/entity_component_system.h	/^#define _MK_COMPONENT_TYPE_FUNCTION(/;"	d
@@ -162,8 +163,8 @@ _world_spawn_COUNT	src/gen/main.gen.c	/^#define _world_spawn_COUNT(/;"	d	file:
 a_clear	src/vups.h	/^u8 *a_clear(Arena *a) { a->count = 0; return a->items;}$/;"	f	typeref:typename:u8 *
 a_var	src/vups.h	/^u8 *a_var(Arena *a, size_t size) { return _a_var_opt(a, size, true, false); }$/;"	f	typeref:typename:u8 *
 add_X_comp	src/entity_component_system.h	/^#define add_X_comp(/;"	d
-archetype_compare_to_archetype	src/main.c	/^bool archetype_compare_to_archetype(Archetype* archetype1,Archetype* archetype2) {$/;"	f	typeref:typename:bool
-archetype_free	src/main.c	/^void archetype_free(Archetype* a) {$/;"	f	typeref:typename:void
+archetype_compare_to_archetype	src/entity_component_system.h	/^bool archetype_compare_to_archetype(Archetype* archetype1,Archetype* archetype2) {$/;"	f	typeref:typename:bool
+archetype_free	src/entity_component_system.h	/^void archetype_free(Archetype* a) {$/;"	f	typeref:typename:void
 archetype_position	src/entity_component_system.h	/^  u archetype_position;$/;"	m	struct:Position	typeref:typename:u
 archetypes	src/entity_component_system.h	/^  Archetypes archetypes;$/;"	m	struct:World	typeref:typename:Archetypes
 capacity	src/util/metam.c	/^  u capacity;$/;"	m	struct:Filepaths	typeref:typename:u	file:
@@ -181,7 +182,7 @@ end	src/vups.h	/^  size_t end;$/;"	m	struct:__anon810325200308	typeref:typename:
 f32	src/vups.h	/^typedef float    f32;$/;"	t	typeref:typename:float
 f64	src/vups.h	/^typedef double   f64;$/;"	t	typeref:typename:double
 free_system_fn	src/main.c	/^void free_system_fn(Archetype *a) {$/;"	f	typeref:typename:void
-get_component	src/main.c	/^#define get_component(/;"	d	file:
+get_component	src/entity_component_system.h	/^#define get_component(/;"	d
 i	src/entity_component_system.h	/^  int i;$/;"	m	struct:Entity	typeref:typename:int
 i16	src/vups.h	/^typedef int16_t  i16;$/;"	t	typeref:typename:int16_t
 i32	src/vups.h	/^typedef int32_t  i32;$/;"	t	typeref:typename:int32_t
@@ -200,7 +201,7 @@ main	src/util/metam.c	/^int main(int argc, char **argv) {$/;"	f	typeref:typename
 make_meta_macro_function_infinitely_variadic	src/util/metam.c	/^String_Holder make_meta_macro_function_infinitely_variadic(u count_needed,const char* function_n/;"	f	typeref:typename:String_Holder
 may_fail	src/vups.h	/^bool may_fail() {$/;"	f	typeref:typename:bool
 may_fail_nest	src/vups.h	/^bool may_fail_nest() {$/;"	f	typeref:typename:bool
-merge_archetypes	src/main.c	/^void merge_archetypes(Archetype* to, Archetype* from) {$/;"	f	typeref:typename:void
+merge_archetypes	src/entity_component_system.h	/^void merge_archetypes(Archetype* to, Archetype* from) {$/;"	f	typeref:typename:void
 meta_macro_count_args	src/util/metam.c	/^u meta_macro_count_args (String_Holder in, u position) {$/;"	f	typeref:typename:u
 meta_macro_count_args_for_each	src/util/metam.c	/^u meta_macro_count_args_for_each(String_Holder in, const char* target_function) {$/;"	f	typeref:typename:u
 meta_macro_get_type	src/util/metam.c	/^String_Holder meta_macro_get_type (String_Holder* in,u position) {$/;"	f	typeref:typename:String_Holder
@@ -287,9 +288,10 @@ print79	src/tests/metam_test_1.c.gen.c	/^#define print79(/;"	d	file:
 print8	src/tests/metam_test_1.c.gen.c	/^#define print8(/;"	d	file:
 print80	src/tests/metam_test_1.c.gen.c	/^#define print80(/;"	d	file:
 print9	src/tests/metam_test_1.c.gen.c	/^#define print9(/;"	d	file:
+print_system_fn	src/main.c	/^void print_system_fn(Archetype *a) {$/;"	f	typeref:typename:void
 read_file	src/vups.h	/^bool read_file(String_Holder_Ptr sh, const char *filepath) {$/;"	f	typeref:typename:bool
 sh	src/vups.h	/^  String_Holder_Ptr sh;$/;"	m	struct:__anon810325200308	typeref:typename:String_Holder_Ptr
-sh_	src/main.c	/^String_Holder sh_(const char * c_str) {$/;"	f	typeref:typename:String_Holder
+sh_	src/vups.h	/^String_Holder sh_(const char * c_str) {$/;"	f	typeref:typename:String_Holder
 sh_append	src/vups.h	/^void sh_append(String_Holder_Ptr sh, char c) {$/;"	f	typeref:typename:void
 sh_append_buf	src/vups.h	/^void sh_append_buf(String_Holder_Ptr sh, const char *buf, size_t lenght) {$/;"	f	typeref:typename:void
 sh_append_c_str	src/vups.h	/^void sh_append_c_str(String_Holder_Ptr sh, const char *c_str) {$/;"	f	typeref:typename:void
@@ -298,7 +300,7 @@ sh_appendf	src/vups.h	/^void sh_appendf(String_Holder_Ptr sh, const char *fmt, .
 sh_c_str	src/vups.h	/^char *sh_c_str(String_Holder_Ptr sh) {$/;"	f	typeref:typename:char *
 sh_double	src/vups.h	/^void sh_double(String_Holder_Ptr sh) { v_double(sh); }$/;"	f	typeref:typename:void
 sh_free	src/vups.h	/^void sh_free(String_Holder_Ptr sh) {$/;"	f	typeref:typename:void
-sh_from_c_str	src/main.c	/^String_Holder sh_from_c_str(const char * c_str) {$/;"	f	typeref:typename:String_Holder
+sh_from_c_str	src/vups.h	/^String_Holder sh_from_c_str(const char * c_str) {$/;"	f	typeref:typename:String_Holder
 sh_is_null_terminated	src/vups.h	/^bool sh_is_null_terminated(String_Holder_Ptr sh) {$/;"	f	typeref:typename:bool
 sh_prealloc	src/vups.h	/^void sh_prealloc(String_Holder_Ptr sh, size_t capacity) {$/;"	f	typeref:typename:void
 sh_strip_null	src/vups.h	/^void sh_strip_null(String_Holder_Ptr sh) {$/;"	f	typeref:typename:void
@@ -322,11 +324,11 @@ v_append_buf	src/vups.h	/^#define v_append_buf(/;"	d
 v_double	src/vups.h	/^#define v_double(/;"	d
 v_free	src/vups.h	/^#define v_free(/;"	d
 v_prealloc	src/vups.h	/^#define v_prealloc(/;"	d
-world_call_on_all	src/main.c	/^void world_call_on_all(World* world, System_Fn_Type fn) {$/;"	f	typeref:typename:void
-world_end_spawn	src/main.c	/^uid world_end_spawn(World *world) {$/;"	f	typeref:typename:uid
-world_free	src/main.c	/^void world_free(World* world) {$/;"	f	typeref:typename:void
-world_get_position	src/main.c	/^Position world_get_position(World* world, uid id) {$/;"	f	typeref:typename:Position
-world_merge_archetypes_if_same	src/main.c	/^u world_merge_archetypes_if_same(World *world) {$/;"	f	typeref:typename:u
+world_call_on_all	src/entity_component_system.h	/^void world_call_on_all(World* world, System_Fn_Type fn) {$/;"	f	typeref:typename:void
+world_end_spawn	src/entity_component_system.h	/^uid world_end_spawn(World *world) {$/;"	f	typeref:typename:uid
+world_free	src/entity_component_system.h	/^void world_free(World* world) {$/;"	f	typeref:typename:void
+world_get_position	src/entity_component_system.h	/^Position world_get_position(World* world, uid id) {$/;"	f	typeref:typename:Position
+world_merge_archetypes_if_same	src/entity_component_system.h	/^u world_merge_archetypes_if_same(World *world) {$/;"	f	typeref:typename:u
 world_spawn	src/gen/ecs.gen.c	/^#define world_spawn(...) _world_spawn_COUNT(__VA_ARGS__, world_spawn6, world_spawn5, world_spawn/;"	d	file:
 world_spawn	src/gen/main.gen.c	/^#define world_spawn(...) _world_spawn_COUNT(__VA_ARGS__, world_spawn3, world_spawn2, world_spawn/;"	d	file:
 world_spawn1	src/gen/ecs.gen.c	/^#define world_spawn1(/;"	d	file:
@@ -338,5 +340,5 @@ world_spawn3	src/gen/main.gen.c	/^#define world_spawn3(/;"	d	file:
 world_spawn4	src/gen/ecs.gen.c	/^#define world_spawn4(/;"	d	file:
 world_spawn5	src/gen/ecs.gen.c	/^#define world_spawn5(/;"	d	file:
 world_spawn6	src/gen/ecs.gen.c	/^#define world_spawn6(/;"	d	file:
-world_start_spawn	src/main.c	/^uid world_start_spawn(World* world) {$/;"	f	typeref:typename:uid
+world_start_spawn	src/entity_component_system.h	/^uid world_start_spawn(World* world) {$/;"	f	typeref:typename:uid
 write_file	src/vups.h	/^bool write_file(String_Holder_Ptr sh, const char *path)$/;"	f	typeref:typename:bool
