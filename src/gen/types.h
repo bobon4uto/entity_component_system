@@ -1,9 +1,7 @@
 #define TYPEDEF_TYPES(T,X) \
+T(Position,"",X) \
 T(Entity,"",X) \
 T(Byte_Ptr,"",X) \
-T(Archetype,"",X) \
-T(_Entity_Creation_Data,"",X) \
-T(World,"",X) \
 T(i8,"",X) \
 T(i16,"",X) \
 T(i32,"",X) \

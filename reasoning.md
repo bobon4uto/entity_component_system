@@ -324,3 +324,6 @@ But now with new types generator and  this thing working its looking pretty fire
 
 it didnt look that dirty, and i made simple logic to skip typedef (because defining two compatible types for generic is bad) if i put # before it. It also skips macros wiith typedefs in them (that was the main goal actually) but also if you do /*#*/ it will treat typedef as in macro, hence, skip it.
 
+since now it looks pretty good imma implement the system part now.
+
+now that systems work its technically complete, althoigh i cannot delete or edit entities, and systems are clunky since its just a function that gets every Archetype and checks if they have needed types, then operates. 

@@ -402,6 +402,7 @@ void sh_append_c_str(String_Holder_Ptr sh, const char *c_str) {
   }
 }
 bool sh_is_null_terminated(String_Holder_Ptr sh) {
+  if (!sh->items) return false;
   return (sh->capacity > 0 && sh->items[sh->count - 1] == '\0');
 }
 void sh_append_null(

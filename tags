@@ -61,7 +61,7 @@
 !_TAG_ROLE_DESCRIPTION!C++!module	partOwner	/used for specifying a partition/
 !_TAG_ROLE_DESCRIPTION!C++!partition	imported	/imported with "imported ..."/
 AVAR	src/vups.h	/^#define AVAR(/;"	d
-Archetype	src/main.c	/^typedef struct Archetype  {$/;"	s	file:
+Archetype	src/main.c	/^\/*# we dont want Archetype to contain itself*\/typedef struct Archetype  {$/;"	s	file:
 Archetype	src/main.c	/^} Archetype;$/;"	t	typeref:struct:Archetype	file:
 Arena	src/vups.h	/^} Arena;$/;"	t	typeref:struct:__anon810325200108
 BASE_ARENA_CAPACITY	src/vups.h	/^#define BASE_ARENA_CAPACITY /;"	d
@@ -78,6 +78,8 @@ FORMAT	src/ecs.pp.c	/^#define FORMAT(/;"	d	file:
 FORMAT	src/vups.h	/^#define FORMAT(/;"	d
 Filepaths	src/util/metam.c	/^typedef struct Filepaths {$/;"	s	file:
 Filepaths	src/util/metam.c	/^} Filepaths;$/;"	t	typeref:struct:Filepaths	file:
+Fn_Holder	src/main.c	/^\/*#*\/ typedef struct Fn_Holder {$/;"	s	file:
+Fn_Holder	src/main.c	/^} Fn_Holder;$/;"	t	typeref:struct:Fn_Holder	file:
 HELLO	src/ecs.pp.c	/^#define HELLO /;"	d	file:
 MACROBEGIN	src/gen/ecs.gen.c	/^#define MACROBEGIN$/;"	d	file:
 MACROBEGIN	src/gen/main.gen.c	/^#define MACROBEGIN$/;"	d	file:
@@ -100,6 +102,8 @@ PRINTF	src/vups.h	/^#define PRINTF(/;"	d
 PROBE	src/ecs.pp.c	/^#define PROBE(/;"	d	file:
 PROBE	src/vups.h	/^#define PROBE(/;"	d
 PTR	src/vups.h	/^#define PTR(/;"	d
+Position	src/main.c	/^typedef struct Position {$/;"	s	file:
+Position	src/main.c	/^} Position;$/;"	t	typeref:struct:Position	file:
 R	src/vups.h	/^#define R return RE/;"	d
 REALLOC	src/vups.h	/^#define REALLOC /;"	d
 RET	src/vups.h	/^#define RET /;"	d
@@ -107,6 +111,9 @@ String_Holder	src/vups.h	/^} String_Holder;$/;"	t	typeref:struct:__anon810325200
 String_Holder_Ptr	src/vups.h	/^typedef String_Holder *String_Holder_Ptr;$/;"	t	typeref:typename:String_Holder *
 String_Variable_Slice	src/vups.h	/^} String_Variable_Slice;$/;"	t	typeref:struct:__anon810325200308
 String_Variable_Slice_Ptr	src/vups.h	/^typedef String_Variable_Slice *String_Variable_Slice_Ptr;$/;"	t	typeref:typename:String_Variable_Slice *
+System	src/main.c	/^\/*#*\/ typedef struct System {$/;"	s	file:
+System	src/main.c	/^} System;$/;"	t	typeref:struct:System	file:
+System_Fn_Type	src/main.c	/^\/*#*\/typedef void (*System_Fn_Type)(Archetype*);$/;"	t	typeref:typename:void (*)(Archetype *)	file:
 TODO	src/vups.h	/^#define TODO(/;"	d
 TYPEDEF_TYPES	src/gen/types.h	/^#define TYPEDEF_TYPES(/;"	d
 TYPEDEF_TYPES	src/main.c	/^  TYPEDEF_TYPES(_VUPS_TT_ENUM_DEF, 0)$/;"	e	enum:__anon6a96e1720103	file:
@@ -125,12 +132,14 @@ VUPS_TYPES	src/vups.h	/^#define VUPS_TYPES(/;"	d
 V_INITIAL_CAPACITY	src/vups.h	/^#define V_INITIAL_CAPACITY /;"	d
 Vups_Type	src/main.c	/^} Vups_Type ;$/;"	t	typeref:enum:__anon6a96e1720103	file:
 WORLD	src/main.c	/^#define WORLD /;"	d	file:
-World	src/main.c	/^typedef struct World {$/;"	s	file:
+World	src/main.c	/^\/*#*\/typedef struct World {$/;"	s	file:
 World	src/main.c	/^} World;$/;"	t	typeref:struct:World	file:
-_Entity_Creation_Data	src/main.c	/^typedef struct _Entity_Creation_Data  {$/;"	s	file:
+_Entity_Creation_Data	src/main.c	/^\/*#*\/typedef struct _Entity_Creation_Data  {$/;"	s	file:
 _Entity_Creation_Data	src/main.c	/^} _Entity_Creation_Data;$/;"	t	typeref:struct:_Entity_Creation_Data	file:
+_MK_ARCHETYPE_TRANSFER_	src/main.c	/^#define _MK_ARCHETYPE_TRANSFER_(/;"	d	file:
 _MK_COMPONENT_CASE_	src/main.c	/^#define _MK_COMPONENT_CASE_(/;"	d	file:
 _MK_COMPONENT_TYPE_ARRAY	src/main.c	/^#define _MK_COMPONENT_TYPE_ARRAY(/;"	d	file:
+_MK_COMPONENT_TYPE_ARRAY_AS_STRUCT_PART	src/main.c	/^#define _MK_COMPONENT_TYPE_ARRAY_AS_STRUCT_PART(/;"	d	file:
 _MK_COMPONENT_TYPE_ARRAY_TYPE	src/main.c	/^#define _MK_COMPONENT_TYPE_ARRAY_TYPE(/;"	d	file:
 _MK_COMPONENT_TYPE_FUNCTION	src/main.c	/^#define _MK_COMPONENT_TYPE_FUNCTION(/;"	d	file:
 _PRINT_COMPONENT_TYPE_ARRAY	src/main.c	/^#define _PRINT_COMPONENT_TYPE_ARRAY(/;"	d	file:
@@ -155,20 +164,26 @@ _world_spawn_COUNT	src/gen/main.gen.c	/^#define _world_spawn_COUNT(/;"	d	file:
 a_clear	src/vups.h	/^u8 *a_clear(Arena *a) { a->count = 0; return a->items;}$/;"	f	typeref:typename:u8 *
 a_var	src/vups.h	/^u8 *a_var(Arena *a, size_t size) { return _a_var_opt(a, size, true, false); }$/;"	f	typeref:typename:u8 *
 add_X_comp	src/main.c	/^#define add_X_comp(/;"	d	file:
+archetype_compare_to_archetype	src/main.c	/^bool archetype_compare_to_archetype(Archetype* archetype1,Archetype* archetype2) {$/;"	f	typeref:typename:TYPEDEF_TYPES (_MK_COMPONENT_TYPE_FUNCTION,0)bool
+archetype_position	src/main.c	/^  u archetype_position;$/;"	m	struct:Position	typeref:typename:u	file:
+archetypes	src/main.c	/^  Archetypes archetypes;$/;"	m	struct:World	typeref:typename:Archetypes	file:
 capacity	src/util/metam.c	/^  u capacity;$/;"	m	struct:Filepaths	typeref:typename:u	file:
 capacity	src/vups.h	/^  size_t capacity;$/;"	m	struct:__anon810325200108	typeref:typename:size_t
 capacity	src/vups.h	/^  size_t capacity;$/;"	m	struct:__anon810325200208	typeref:typename:size_t
 ch	src/main.c	/^  char_ptr ch;$/;"	m	struct:Entity	typeref:typename:char_ptr	file:
 char_ptr	src/vups.h	/^typedef char* char_ptr;$/;"	t	typeref:typename:char *
 const_char_ptr	src/vups.h	/^typedef const char* const_char_ptr;$/;"	t	typeref:typename:const char *
+count	src/main.c	/^  u count;$/;"	m	struct:Archetype	typeref:typename:u	file:
 count	src/util/metam.c	/^  u count;$/;"	m	struct:Filepaths	typeref:typename:u	file:
 count	src/vups.h	/^  size_t count;$/;"	m	struct:__anon810325200108	typeref:typename:size_t
 count	src/vups.h	/^  size_t count;$/;"	m	struct:__anon810325200208	typeref:typename:size_t
 data	src/main.c	/^  Bytes data;$/;"	m	struct:_Entity_Creation_Data	typeref:typename:Bytes	file:
 end	src/vups.h	/^  size_t end;$/;"	m	struct:__anon810325200308	typeref:typename:size_t
-entity	src/main.c	/^  Entity entity;$/;"	m	struct:World	typeref:typename:Entity	file:
 f32	src/vups.h	/^typedef float    f32;$/;"	t	typeref:typename:float
 f64	src/vups.h	/^typedef double   f64;$/;"	t	typeref:typename:double
+fn	src/main.c	/^  System_Fn_Type fn;$/;"	m	struct:Fn_Holder	typeref:typename:System_Fn_Type	file:
+fn	src/main.c	/^  System_Fn_Type fn;$/;"	m	struct:System	typeref:typename:System_Fn_Type	file:
+get_component	src/main.c	/^#define get_component(/;"	d	file:
 i	src/main.c	/^  int i;$/;"	m	struct:Entity	typeref:typename:int	file:
 i16	src/vups.h	/^typedef int16_t  i16;$/;"	t	typeref:typename:int16_t
 i32	src/vups.h	/^typedef int32_t  i32;$/;"	t	typeref:typename:int32_t
@@ -187,9 +202,12 @@ main	src/util/metam.c	/^int main(int argc, char **argv) {$/;"	f	typeref:typename
 make_meta_macro_function_infinitely_variadic	src/util/metam.c	/^String_Holder make_meta_macro_function_infinitely_variadic(u count_needed,const char* function_n/;"	f	typeref:typename:String_Holder
 may_fail	src/vups.h	/^bool may_fail() {$/;"	f	typeref:typename:bool
 may_fail_nest	src/vups.h	/^bool may_fail_nest() {$/;"	f	typeref:typename:bool
+merge_archetypes	src/main.c	/^void merge_archetypes(Archetype* to, Archetype* from) {$/;"	f	typeref:typename:void
 meta_macro_count_args	src/util/metam.c	/^u meta_macro_count_args (String_Holder in, u position) {$/;"	f	typeref:typename:u
 meta_macro_count_args_for_each	src/util/metam.c	/^u meta_macro_count_args_for_each(String_Holder in, const char* target_function) {$/;"	f	typeref:typename:u
 meta_macro_get_type	src/util/metam.c	/^String_Holder meta_macro_get_type (String_Holder* in,u position) {$/;"	f	typeref:typename:String_Holder
+number_in_archetype	src/main.c	/^  u number_in_archetype;$/;"	m	struct:Position	typeref:typename:u	file:
+position_table	src/main.c	/^  Positions position_table;$/;"	m	struct:World	typeref:typename:Positions	file:
 print	src/tests/metam_test_1.c.gen.c	/^#define print(...) _print_COUNT(__VA_ARGS__, print80, print79, print78, print77, print76, print7/;"	d	file:
 print1	src/tests/metam_test_1.c.gen.c	/^#define print1(/;"	d	file:
 print10	src/tests/metam_test_1.c.gen.c	/^#define print10(/;"	d	file:
@@ -287,6 +305,8 @@ sh_strip_null	src/vups.h	/^void sh_strip_null(String_Holder_Ptr sh) {$/;"	f	type
 start	src/vups.h	/^  size_t start;$/;"	m	struct:__anon810325200308	typeref:typename:size_t
 svs_link	src/vups.h	/^String_Variable_Slice svs_link(String_Holder_Ptr sh) {$/;"	f	typeref:typename:String_Variable_Slice
 svs_to_sh	src/vups.h	/^String_Holder svs_to_sh(String_Variable_Slice_Ptr svs) {$/;"	f	typeref:typename:String_Holder
+test_system_fn	src/main.c	/^void test_system_fn(Archetype *a) {$/;"	f	typeref:typename:void
+types	src/main.c	/^  Vups_Types types; \/\/ types that archetype has to have for system to operate on it$/;"	m	struct:System	typeref:typename:Vups_Types	file:
 types	src/main.c	/^  Vups_Types types;$/;"	m	struct:Archetype	typeref:typename:Vups_Types	file:
 types	src/main.c	/^  Vups_Types types;$/;"	m	struct:_Entity_Creation_Data	typeref:typename:Vups_Types	file:
 types	src/util/metam.c	/^String_Holder types (String_Holder* in) {$/;"	f	typeref:typename:String_Holder
@@ -303,7 +323,10 @@ v_append_buf	src/vups.h	/^#define v_append_buf(/;"	d
 v_double	src/vups.h	/^#define v_double(/;"	d
 v_free	src/vups.h	/^#define v_free(/;"	d
 v_prealloc	src/vups.h	/^#define v_prealloc(/;"	d
-world_end_spawn	src/main.c	/^uid world_end_spawn(World *world) {$/;"	f
+world_call_on_all	src/main.c	/^void world_call_on_all(World* world, System_Fn_Type fn) {$/;"	f	typeref:typename:void
+world_end_spawn	src/main.c	/^uid world_end_spawn(World *world) {$/;"	f	typeref:typename:uid
+world_get_position	src/main.c	/^Position world_get_position(World* world, uid id) {$/;"	f	typeref:typename:Position
+world_merge_archetypes_if_same	src/main.c	/^u world_merge_archetypes_if_same(World *world) {$/;"	f	typeref:typename:u
 world_spawn	src/gen/ecs.gen.c	/^#define world_spawn(...) _world_spawn_COUNT(__VA_ARGS__, world_spawn6, world_spawn5, world_spawn/;"	d	file:
 world_spawn	src/gen/main.gen.c	/^#define world_spawn(...) _world_spawn_COUNT(__VA_ARGS__, world_spawn3, world_spawn2, world_spawn/;"	d	file:
 world_spawn1	src/gen/ecs.gen.c	/^#define world_spawn1(/;"	d	file:
@@ -315,5 +338,5 @@ world_spawn3	src/gen/main.gen.c	/^#define world_spawn3(/;"	d	file:
 world_spawn4	src/gen/ecs.gen.c	/^#define world_spawn4(/;"	d	file:
 world_spawn5	src/gen/ecs.gen.c	/^#define world_spawn5(/;"	d	file:
 world_spawn6	src/gen/ecs.gen.c	/^#define world_spawn6(/;"	d	file:
-world_start_spawn	src/main.c	/^bool world_start_spawn(World* world) {$/;"	f	typeref:typename:bool
+world_start_spawn	src/main.c	/^uid world_start_spawn(World* world) {$/;"	f	typeref:typename:uid
 write_file	src/vups.h	/^bool write_file(String_Holder_Ptr sh, const char *path)$/;"	f	typeref:typename:bool
