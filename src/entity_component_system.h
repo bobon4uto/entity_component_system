@@ -104,9 +104,6 @@ void world_free(World *world);
 
 #ifdef ENTITY_COMPONENT_SYSTEM_IMPLEMENTATION
 
-// #define _MK_COMPONENT_TYPE_ARRAY(TYPE,_F,_X) DA_##TYPE TYPE##_da = {0};
-// TYPEDEF_TYPES(_MK_COMPONENT_TYPE_ARRAY, 0)
-
 uid world_start_spawn(World *world) {
   Archetype empty = {0};
   if (world->archetypes.count < world->archetypes.capacity) {
@@ -114,16 +111,7 @@ uid world_start_spawn(World *world) {
   }
   v_append(&world->archetypes, empty);
   return world->id;
-  // return world->_entity_creation_data.data.count == 0;
-  //  it would be smart to use some lock instead for multithread
 }
-// void  add_int_comp(World* world, int component) {
-//   Bytes* data = &world->_entity_creation_data.data;
-//   Vups_Types* types = &world->_entity_creation_data.types;
-//
-//   v_append_buf(data, &component, sizeof(component));
-//   v_append(types, TYPE_ENUM(component));
-// }
 
 bool archetype_compare_to_archetype(Archetype *archetype1,
                                     Archetype *archetype2) {
@@ -139,11 +127,10 @@ void merge_archetypes(Archetype *to, Archetype *from) {
   u scount = from->count;
 #define _MK_ARCHETYPE_TRANSFER_(TYPE, _F, _X)                                  \
   v_append_buf((&to->TYPE##_da), (from->TYPE##_da.items),                      \
-               (from->TYPE##_da.count)); /*v_free(&from->TYPE##_da)*/          \
+               (from->TYPE##_da.count));                                       \
   ;
 
   TYPEDEF_TYPES(_MK_ARCHETYPE_TRANSFER_, 0)
-  // v_free(&from->types); //replaced in favour of a check in archetype creation
   to->count += scount;
 }
 u world_merge_archetypes_if_same(World *world) {
@@ -154,17 +141,12 @@ u world_merge_archetypes_if_same(World *world) {
                                        new_archetype)) {
       merge_archetypes(world->archetypes.items + i, new_archetype);
       world->archetypes.count--;
-      // PROBE(i);
       return i;
     }
   }
-
-  // PROBE(world->archetypes.count - 1);
   return world->archetypes.count - 1;
 }
 uid world_end_spawn(World *world) {
-  // figure out where to put components (for now just push to columns with
-  // corresponding types.)
 
   Vups_Types types = world->_entity_creation_data.types;
   u j = 0;
@@ -203,35 +185,11 @@ Position world_get_position(World *world, uid id) {
   return world->position_table.items[id];
 }
 
-///*#*/ typedef struct Fn_Holder {
-//  System_Fn_Type fn;
-//} Fn_Holder;
-
 void world_call_on_all(World *world, System_Fn_Type fn) {
   for (u i = 0; i < world->archetypes.count; ++i) {
     fn(world->archetypes.items + i);
   }
 }
-
-/// void entity_to_tmp(uid entity) {
-
-// get every component and push it onto tmp
-///}
-// void tmp_to_entity_without_type(uid entity, Vups_Type without) {
-//  i think this is easier than deleting type from tmp (but maybe the same
-//  actually, just skips creating another tmp to store changed value.) also, we
-//  slould free skipped type if possible. since it depends on the type (da's can
-//  be v_free, but something complex cant, eg da of da's.) its up to the user to
-//  define free functions for structs.
-//
-//  or... maybe i can generic the hell outa it!!!
-//}
-
-///*#*/ typedef struct System {
-//  System_Fn_Type fn;
-//  Vups_Types types; // types that archetype has to have for system to operate
-//  on it
-//} System;
 
 void archetype_free(Archetype *a) {
 
